@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Source_Code_Pro } from "next/font/google";
 import "./globals.css";
-import { Header } from "../../ui/components/Header";
+import { Header } from "../components/Header";
 
 const sourceCode = Source_Code_Pro({
   variable: "--font-source-code-pro",
@@ -26,7 +26,7 @@ export default function RootLayout({
         <header>
           <Header />
         </header>
-        <main className="flex-grow">{children}</main>
+        <main className="flex-grow relative">{children}</main>
         <footer className="text-center uppercase">
           authorized personnel only
         </footer>

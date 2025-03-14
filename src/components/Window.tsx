@@ -1,5 +1,6 @@
 "use client";
 
+import { SquareX } from "lucide-react";
 import { RefObject, useRef } from "react";
 import Draggable from "react-draggable";
 
@@ -22,9 +23,21 @@ export default function Window({
       bounds="parent"
       nodeRef={dragable as RefObject<HTMLElement>}
     >
-      <div ref={dragable} className="bg-sky-500" style={{ width, height }}>
-        <div id="window_header" className="handle h-8 bg-gray-300"></div>
-        <div id="window_content">
+      <div
+        ref={dragable}
+        className="border rounded shadow-md"
+        style={{ width, height }}
+      >
+        <div
+          id="window_header"
+          className="window flex handle h-8 p-1 items-center border-b justify-between"
+        >
+          <button className="button">
+            <SquareX />
+          </button>
+          <p>Window Title</p>
+        </div>
+        <div id="window_content" className="p-2">
           placeholder
           {children}
         </div>

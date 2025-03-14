@@ -16,8 +16,8 @@ export const Header = () => {
   const futureDate = addYears(dateState, 149);
   return (
     <div className="pl-4 flex flex-row border-b border-gray-300 w-full justify-between">
-      <p className="text-left pr-8">Citadel Archives Terminal</p>
-      <div className="flex flex-row gap-4">
+      <p className="text-left pr-8">Terminal</p>
+      <div className="flex flex-row gap-4 pr-8">
         <p className="justify-end">
           {dateState.toLocaleString("en-US", {
             hour: "numeric",
