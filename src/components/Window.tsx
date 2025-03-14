@@ -1,8 +1,9 @@
 "use client";
 
-import { SquareX } from "lucide-react";
+import { X } from "lucide-react";
 import { RefObject, useRef } from "react";
 import Draggable from "react-draggable";
+import { WindowSpacer } from "./ui/window-spacer";
 
 interface WindowProps {
   children?: React.ReactNode;
@@ -25,16 +26,17 @@ export default function Window({
     >
       <div
         ref={dragable}
-        className="border rounded shadow-md"
+        className="border rounded shadow-md bg-stone-950"
         style={{ width, height }}
       >
         <div
           id="window_header"
           className="window flex handle h-8 p-1 items-center border-b justify-between"
         >
-          <button className="button">
-            <SquareX />
+          <button className="button border">
+            <X size={14} />
           </button>
+          <WindowSpacer />
           <p>Window Title</p>
         </div>
         <div id="window_content" className="p-2">

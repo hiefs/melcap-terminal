@@ -24,9 +24,6 @@ body {
   color: var(--foreground);
   font-family: var(--font-source-code-pro);
   cursor: url("./../../public/cursor.svg"), auto;
-  ::hover {
-    cursor: url("./../../public/cursor_link.svg"), auto;
-  }
 }
 
 .button {

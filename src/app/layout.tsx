@@ -26,7 +26,7 @@ export default function RootLayout({
         <header>
           <Header />
         </header>
-        <main className="flex-grow relative">{children}</main>
+        <main className="main flex-grow relative">{children}</main>
         <footer className="text-center uppercase">
           authorized personnel only
         </footer>
