@@ -9,12 +9,14 @@ interface WindowProps {
   children?: React.ReactNode;
   width: number;
   height: number;
+  title?: string;
 }
 
 export default function Window({
   children,
   width,
   height,
+  title,
 }: Readonly<WindowProps>) {
   const dragable = useRef<HTMLDivElement>(null);
 
@@ -26,18 +28,25 @@ export default function Window({
     >
       <div
         ref={dragable}
-        className="border rounded shadow-md bg-stone-950"
+        className="border shadow-md bg-stone-950"
         style={{ width, height }}
       >
         <div
           id="window_header"
           className="window flex handle h-8 p-1 items-center border-b justify-between"
         >
-          <button className="button border">
+          <button className="button border ml-1">
             <X size={14} />
           </button>
-          <WindowSpacer />
-          <p>Window Title</p>
+          {title ? (
+            <>
+              <WindowSpacer />
+              <p>{title || ""}</p>
+              <WindowSpacer />
+            </>
+          ) : (
+            <WindowSpacer />
+          )}
         </div>
         <div id="window_content" className="p-2">
           placeholder
