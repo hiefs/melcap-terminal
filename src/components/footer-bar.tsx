@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { UtilityButton } from "./ui/utility-button";
 
 export const Taskbar = () => {
   const [dateState, setDateState] = useState(new Date());
@@ -15,8 +16,10 @@ export const Taskbar = () => {
 
   const futureDate = addYears(dateState, 149);
   return (
-    <div className="pl-4 flex flex-row border-t p-2 border-gray-300 w-full justify-between">
-      <p className="text-left pr-8">Terminal</p>
+    <div className="pl-4 flex flex-row p-2 w-full justify-between">
+      <p className="text-left pr-8">
+        <UtilityButton text="Start" />
+      </p>
       <div className="flex flex-row gap-4 pr-8">
         <p className="justify-end">
           {dateState.toLocaleString("en-US", {

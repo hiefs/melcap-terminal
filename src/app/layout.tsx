@@ -9,7 +9,7 @@ const sourceCode = Source_Code_Pro({
 });
 
 export const metadata: Metadata = {
-  title: "Archives Terminal",
+  title: "Terminal",
   description: "Please complete your tasks",
 };
 

@@ -49,7 +49,6 @@ export default function Window({
           )}
         </div>
         <div id="window_content" className="p-2">
-          placeholder
           {children}
         </div>
       </div>
