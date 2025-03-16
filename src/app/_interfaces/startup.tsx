@@ -42,9 +42,7 @@ export const Startup = (props: StartupProps) => {
     const generateId = () => {
         const nanoid = customAlphabet('1234567890abcdef', 10);
         const number = nanoid(10);
-        console.log(number);
         setFormData((prev) => ({ ...prev, employee_id: number }));
-        console.log(formData);
     };
 
     // const handleSubmit = (formData: FormData) => {
@@ -66,6 +64,7 @@ export const Startup = (props: StartupProps) => {
     return (
         <div className="flex w-full h-full justify-center items-center">
             {isOpen && <div>
+
                 {(activeStep <= 2) && <TypeAnimation
                     omitDeletionAnimation={true}
                     sequence={[
@@ -73,7 +72,7 @@ export const Startup = (props: StartupProps) => {
                         800,
                         'Welcome to the Citadel Ministry of Employment & Labor\'s \nCareer Advancement Program\n\nPlease Wait...',
                         5000,
-                        'Are you a returning user?',
+                        'Welcome to the Citadel Ministry of Employment & Labor\'s \nCareer Advancement Program\n\n Are you a returning user?',
                         () => nextStep()
                     ]}
                     wrapper="span"
@@ -224,9 +223,9 @@ export const Startup = (props: StartupProps) => {
                             'We have found a career for you! \n\n Please wait while we generate your employee ID. Please wait...',
                             () => generateId(),
                             5000,
-                            `Your employee ID is ${formData.employee_id}. \n\n You will need this to log in to access your C-MELCAP account. \n Please keep it safe.`,
+                            `Your employee Id has been generated. \n\n You will need it to log in to access your C-MELCAP account. \n Please keep it safe.`,
                             2000,
-                            `Your employee ID is ${formData.employee_id}. \n\n You will need this to log in to access your C-MELCAP account. \n Please keep it safe. \n\n Please select a 6-digit pin for your account.`,
+                            `Your employee Id has been generated. \n\n You will need it to log in to access your C-MELCAP account. \n Please keep it safe. \n\n Please select a 6-digit pin for your account.`,
                             () => nextStep()
                         ]}
                         wrapper="span"
@@ -243,9 +242,7 @@ export const Startup = (props: StartupProps) => {
                             5000,
                             'Thank you.',
                             5000,
-                            'You have been successfully enrolled in the \nCitadel Ministry of Employment & Labor\'s \nCareer Advancement Program.',
-                            5000,
-                            'Remember to always be yourself.',
+                            'Congratulations! You have been successfully enrolled in the \nCitadel Ministry of Employment & Labor\'s \nCareer Advancement Program.',
                             5000,
                             'Redirecting to the terminal...',
                             10000,
@@ -366,7 +363,8 @@ export const Startup = (props: StartupProps) => {
                     </div>
                 )}
                 {activeStep === 18 && (
-                    <div className="flex flex-row justify-center items-center gap-2 mt-8">
+                    <div className="flex flex-col justify-center items-center gap-2 mt-8">
+                        <p>Your employee ID: {formData.employee_id}</p>
                         <form>
                             <input
                                 id="pin"
