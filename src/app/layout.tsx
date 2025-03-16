@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
 import { Source_Code_Pro } from "next/font/google";
 import "./globals.css";
-import { Taskbar } from "@/components/footer-bar";
 import { Suspense } from "react";
 import Loading from "./loading";
 
-const sourceCode = Source_Code_Pro({
+export const sourceCode = Source_Code_Pro({
   variable: "--font-source-code-pro",
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Terminal",
   description: "Please complete your tasks",
 };
@@ -28,9 +27,6 @@ export default function RootLayout({
         <Suspense fallback={<Loading />}>
           <header></header>
           <main className="main flex-grow relative">{children}</main>
-          <footer>
-            <Taskbar />
-          </footer>
         </Suspense>
       </body>
     </html>

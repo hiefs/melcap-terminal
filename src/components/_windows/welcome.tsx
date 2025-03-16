@@ -2,7 +2,7 @@
 
 import { Window } from "@/components/standard-window";
 import { Loader } from "@/components/ui/loading-dots";
-import { Employee } from "@/lib/definitions";
+import { Employee } from "@/lib/interfaces";
 import { createEmployee } from "@/utils/employee";
 import { useState } from "react";
 
@@ -22,11 +22,9 @@ export const WelcomeWindow = () => {
       banned: false,
     };
     createEmployee(employee).then((res) => {
-      console.log(res);
       setLoading(false);
     });
   };
-  console.log(submit);
 
   return (
     <Window width={400} height={400} title="Welcome" start={{ x: 300, y: 200 }}>

@@ -1,15 +1,13 @@
-import { WelcomeWindow } from "@/components/_windows/welcome";
+"use client";
+
+import { useState } from "react";
+import { Startup } from "./_interfaces/startup";
+import { Desktop } from "./_interfaces/desktop";
 
 export default function Home() {
+  const [startupActive, setStartupActive] = useState(true);
   return (
-    <div className="w-full h-full p-8">
-      <WelcomeWindow />
-      <div className="absolute w-1/6 h-2/3 top-2 right-2">
-        <div
-          id="terminal_icons"
-          className="flex flex-col justify-center items-center"
-        ></div>
-      </div>
-    </div>
+    <div className="w-full h-full">{startupActive ? <Startup open={startupActive} onClose={() => setStartupActive(false)} /> : <Desktop />}</div>
+
   );
 }
