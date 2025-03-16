@@ -1,4 +1,4 @@
-import { WelcomeWindow } from "@/components/_windows/welcome-window/welcome";
+import { WelcomeWindow } from "@/components/_windows/welcome";
 
 export default function Home() {
   return (
