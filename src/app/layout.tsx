@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Source_Code_Pro } from "next/font/google";
 import "./globals.css";
 import { Taskbar } from "@/components/footer-bar";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 const sourceCode = Source_Code_Pro({
   variable: "--font-source-code-pro",
@@ -23,11 +25,13 @@ export default function RootLayout({
       <body
         className={`${sourceCode.variable} antialiased flex flex-col h-screen overflow-hidden`}
       >
-        <header></header>
-        <main className="main flex-grow relative">{children}</main>
-        <footer>
-          <Taskbar />
-        </footer>
+        <Suspense fallback={<Loading />}>
+          <header></header>
+          <main className="main flex-grow relative">{children}</main>
+          <footer>
+            <Taskbar />
+          </footer>
+        </Suspense>
       </body>
     </html>
   );

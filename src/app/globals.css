@@ -32,3 +32,7 @@ body {
 .window {
   cursor: url("./../../public/cursor_move.svg"), auto;
 }
+
+.input {
+  cursor: url("./../../public/cursor_type.svg"), auto;
+}
