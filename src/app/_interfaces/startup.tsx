@@ -47,6 +47,22 @@ export const Startup = (props: StartupProps) => {
         console.log(formData);
     };
 
+    // const handleSubmit = (formData: FormData) => {
+    //     setLoading(true);
+    //     setSubmit(true);
+    //     const employee: Employee = {
+    //       name: formData.get("name") as string,
+    //       race: formData.get("race") as string,
+    //       age: Number(formData.get("age")),
+    //       specialty: formData.get("specialty") as string,
+    //       pin: formData.get("pin") as string,
+    //       banned: false,
+    //     };
+    //     createEmployee(employee).then((res) => {
+    //       setLoading(false);
+    //     });
+    //   };
+
     return (
         <div className="flex w-full h-full justify-center items-center">
             {isOpen && <div>
