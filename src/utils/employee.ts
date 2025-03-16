@@ -1,6 +1,6 @@
 "use server";
 
-import { Employee } from "@/lib/definitions.js";
+import { Employee } from "@/lib/interfaces.js";
 import client from "./supabase";
 
 export async function createEmployee(employee: Employee) {
@@ -10,6 +10,7 @@ export async function createEmployee(employee: Employee) {
       {
         name: employee.name,
         race: employee.race,
+        employee_id: employee.employee_id,
         age: employee.age,
         specialty: employee.specialty,
         pin: employee.pin,
