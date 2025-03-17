@@ -1,6 +1,6 @@
 "use server";
 
-import { Employee } from "@/lib/interfaces.js";
+import { Employee, EmployeeLogin } from "@/lib/interfaces.js";
 import client from "./supabase";
 
 export async function createEmployee(employee: Employee) {
@@ -13,6 +13,7 @@ export async function createEmployee(employee: Employee) {
         employee_id: employee.employee_id,
         age: employee.age,
         specialty: employee.specialty,
+        position: employee.position,
         pin: employee.pin,
         banned: employee.banned,
       },
@@ -22,5 +23,39 @@ export async function createEmployee(employee: Employee) {
   if (error) {
     throw error;
   }
-  return "Employee created successfully";
+}
+
+export async function loginEmployee(employee: EmployeeLogin) {
+  const { data, error } = await client
+    .from("employee")
+    .select("*")
+    .eq("employee_id", employee.employee_id)
+    .eq("pin", employee.pin);
+
+  if (error) {
+    throw error;
+  }
+
+  if (data.length === 0) {
+    return null;
+  } else {
+    return data[0];
+  }
+}
+
+export async function checkEmployeeId(employeeId: string) {
+  const { data, error } = await client
+    .from("employee")
+    .select("*")
+    .eq("employee_id", employeeId);
+
+  if (error) {
+    throw error;
+  }
+
+  if (data.length === 0) {
+    return true;
+  } else {
+    return false;
+  }
 }

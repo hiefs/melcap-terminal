@@ -16,7 +16,7 @@ export const Taskbar = () => {
 
   const futureDate = addYears(dateState, 149);
   return (
-    <div className="pl-4 flex flex-row p-2 w-full justify-between">
+    <div className="pl-4 flex flex-row p-2 w-full justify-between z-50 fixed bottom-0 bg-(--background)">
       <p className="text-left pr-8">
         <UtilityButton text="Start" />
       </p>

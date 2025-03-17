@@ -36,3 +36,10 @@ body {
 .input {
   cursor: url("./../../public/cursor_type.svg"), auto;
 }
+
+.citadel {
+  background-image: url("https://supabase.owlbear.cc/storage/v1/object/public/large-images/citadel_logo.png");
+  background-size: 15%;
+  background-repeat: no-repeat;
+  background-position: center;
+}

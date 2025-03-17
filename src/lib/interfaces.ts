@@ -6,6 +6,12 @@ export interface Employee {
   race: string;
   age: number;
   specialty: string;
+  position: string;
   pin: string;
   banned: boolean;
+}
+
+export interface EmployeeLogin {
+  employee_id: string;
+  pin: string;
 }
