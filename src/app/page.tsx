@@ -62,7 +62,7 @@ export default function Home() {
       ) : isStartupActive ? (
         <Startup open={isStartupActive} />
       ) : (
-        <Desktop user={user} />
+        <Desktop />
       )}
     </div>
   );
