@@ -1,6 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Role, setIsLoggedIn, setRole, setUser, User } from "./user-reducer";
 import { Employee } from "../interfaces";
+import {
+  setIsInfoOpen,
+  setIsTasksOpen,
+  setIsFilesOpen,
+  setIsInboxOpen,
+  setIsSearchOpen,
+  setIsNewsOpen,
+} from "./app-reducer";
 
 export const userLogin = createAsyncThunk(
   "user/login",
@@ -24,5 +32,11 @@ export const userLogout = createAsyncThunk(
     dispatch(setUser({ eId: "", name: "", department: "", title: "" }));
     dispatch(setRole(Role.User));
     dispatch(setIsLoggedIn(false));
+    dispatch(setIsInfoOpen(false));
+    dispatch(setIsTasksOpen(false));
+    dispatch(setIsFilesOpen(false));
+    dispatch(setIsInboxOpen(false));
+    dispatch(setIsSearchOpen(false));
+    dispatch(setIsNewsOpen(false));
   }
 );

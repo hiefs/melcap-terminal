@@ -1,5 +1,6 @@
 "use client";
 
+import { InfoWindow } from "@/components/content/info-window";
 import { Window } from "@/components/standard-window";
 import { Taskbar } from "@/components/taskbar";
 import { DesktopIcon } from "@/components/ui/desktop-icon";
@@ -19,7 +20,7 @@ export const Desktop = () => {
   const [zIndexOrder, setZIndexOrder] = useState<string[]>([]);
   const dispatch = useAppDispatch();
 
-  //const user = useAppSelector((state) => state.user.user);
+  const user = useAppSelector((state) => state.user.user);
   const app = useAppSelector((state) => state.app);
   const isTrashOpen = app.isTrashOpen;
   const isInfoOpen = app.isInfoOpen;
@@ -114,16 +115,16 @@ export const Desktop = () => {
           <p>Trash Window</p>
         </Window>
         <Window
-          width={400}
-          height={300}
+          width={300}
+          height={200}
           title={"Info"}
-          start={{ x: 20, y: 30 }}
+          start={{ x: 360, y: 30 }}
           open={isInfoOpen}
           onClose={() => dispatch(setIsInfoOpen(false))}
           zIndex={getZIndex("info")}
           onWindowClick={() => bringToFront("info")}
         >
-          <p>Info Window</p>
+          <InfoWindow user={user} />
         </Window>
         <Window
           width={400}

@@ -14,7 +14,7 @@ interface appState {
 const initialState: appState = {
   isStartupActive: true,
   isTrashOpen: false,
-  isInfoOpen: false,
+  isInfoOpen: true,
   isTasksOpen: false,
   isFilesOpen: false,
   isInboxOpen: false,

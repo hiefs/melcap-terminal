@@ -79,7 +79,7 @@ export const Specialty: Careers[] = [
   },
   {
     department: "Social Sciences",
-    positions: ["Crime Analyst"],
+    positions: ["Crime Analyst", "Cultural Anthropologist"],
   },
   {
     department: "Other",
