@@ -15,3 +15,9 @@ export interface EmployeeLogin {
   employee_id: string;
   pin: string;
 }
+
+export interface EmployeeRegister {
+  name: string;
+  specialty: string;
+  position: string;
+}

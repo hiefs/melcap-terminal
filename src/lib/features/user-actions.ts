@@ -18,6 +18,9 @@ export const userLogin = createAsyncThunk(
       name: employee.name,
       department: employee.specialty,
       title: employee.position,
+      race: employee.race,
+      age: employee.age,
+      enrolledDate: employee.created_at,
     };
 
     dispatch(setUser(user));
@@ -29,7 +32,17 @@ export const userLogin = createAsyncThunk(
 export const userLogout = createAsyncThunk(
   "user/logout",
   async (_, { dispatch }) => {
-    dispatch(setUser({ eId: "", name: "", department: "", title: "" }));
+    dispatch(
+      setUser({
+        eId: "",
+        name: "",
+        department: "",
+        title: "",
+        race: "",
+        age: 0,
+        enrolledDate: "",
+      })
+    );
     dispatch(setRole(Role.User));
     dispatch(setIsLoggedIn(false));
     dispatch(setIsInfoOpen(false));

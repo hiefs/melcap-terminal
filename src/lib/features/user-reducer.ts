@@ -10,6 +10,9 @@ export interface User {
   name: string;
   department: string;
   title: string;
+  race: string;
+  age: number;
+  enrolledDate?: string;
 }
 
 interface userState {
@@ -24,6 +27,9 @@ const initialState: userState = {
     name: "",
     department: "",
     title: "",
+    race: "",
+    age: 0,
+    enrolledDate: "",
   },
   role: Role.User,
   isLoggedIn: false,

@@ -1,6 +1,13 @@
 "use client";
 
+import { FilesWindow } from "@/components/content/files-window";
+import { InboxWindow } from "@/components/content/inbox-window";
 import { InfoWindow } from "@/components/content/info-window";
+import { NewsWindow } from "@/components/content/news-window";
+import { SearchWindow } from "@/components/content/search-window";
+import { SupportWindow } from "@/components/content/support-window";
+import { TaskWindow } from "@/components/content/task-window";
+import { TrashWindow } from "@/components/content/trash-window";
 import { Window } from "@/components/standard-window";
 import { Taskbar } from "@/components/taskbar";
 import { DesktopIcon } from "@/components/ui/desktop-icon";
@@ -10,6 +17,7 @@ import {
   setIsInfoOpen,
   setIsNewsOpen,
   setIsSearchOpen,
+  setIsSupportOpen,
   setIsTasksOpen,
   setIsTrashOpen,
 } from "@/lib/features/app-reducer";
@@ -29,6 +37,7 @@ export const Desktop = () => {
   const isInboxOpen = app.isInboxOpen;
   const isSearchOpen = app.isSearchOpen;
   const isNewsOpen = app.isNewsOpen;
+  const isSupportOpen = app.isSupportOpen;
 
   const bringToFront = (windowId: string) => {
     setZIndexOrder((prevOrder) => [
@@ -99,12 +108,19 @@ export const Desktop = () => {
               }
               onClick={() => dispatch(setIsNewsOpen(!isNewsOpen))}
             />
+            <DesktopIcon
+              title="Support"
+              image={
+                "https://supabase.owlbear.cc/storage/v1/object/public/desktop-icons/support.png"
+              }
+              onClick={() => dispatch(setIsSupportOpen(!isSupportOpen))}
+            />
           </div>
         </div>
         {/* Desktop Windows */}
         <Window
           width={400}
-          height={300}
+          height={100}
           title={"Trash"}
           start={{ x: 10, y: 10 }}
           open={isTrashOpen}
@@ -112,11 +128,11 @@ export const Desktop = () => {
           zIndex={getZIndex("trash")}
           onWindowClick={() => bringToFront("trash")}
         >
-          <p>Trash Window</p>
+          <TrashWindow />
         </Window>
         <Window
           width={300}
-          height={200}
+          height={300}
           title={"Info"}
           start={{ x: 360, y: 30 }}
           open={isInfoOpen}
@@ -127,7 +143,7 @@ export const Desktop = () => {
           <InfoWindow user={user} />
         </Window>
         <Window
-          width={400}
+          width={430}
           height={300}
           title={"Tasks"}
           start={{ x: 130, y: 30 }}
@@ -136,7 +152,7 @@ export const Desktop = () => {
           zIndex={getZIndex("tasks")}
           onWindowClick={() => bringToFront("tasks")}
         >
-          <p>Please remember to complete your tasks</p>
+          <TaskWindow />
         </Window>
         <Window
           width={400}
@@ -148,7 +164,7 @@ export const Desktop = () => {
           zIndex={getZIndex("files")}
           onWindowClick={() => bringToFront("files")}
         >
-          <p>Files Window</p>
+          <FilesWindow />
         </Window>
         <Window
           width={400}
@@ -160,7 +176,7 @@ export const Desktop = () => {
           zIndex={getZIndex("inbox")}
           onWindowClick={() => bringToFront("inbox")}
         >
-          <p>Inbox</p>
+          <InboxWindow />
         </Window>
         <Window
           width={400}
@@ -172,7 +188,7 @@ export const Desktop = () => {
           zIndex={getZIndex("search")}
           onWindowClick={() => bringToFront("search")}
         >
-          <p>employee list</p>
+          <SearchWindow />
         </Window>
         <Window
           width={400}
@@ -184,7 +200,19 @@ export const Desktop = () => {
           zIndex={getZIndex("news")}
           onWindowClick={() => bringToFront("news")}
         >
-          <p>News!</p>
+          <NewsWindow />
+        </Window>
+        <Window
+          width={400}
+          height={250}
+          title={"Support"}
+          start={{ x: 110, y: 40 }}
+          open={isSupportOpen}
+          onClose={() => dispatch(setIsSupportOpen(false))}
+          zIndex={getZIndex("support")}
+          onWindowClick={() => bringToFront("support")}
+        >
+          <SupportWindow />
         </Window>
       </div>
       <div>

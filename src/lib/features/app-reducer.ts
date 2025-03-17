@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { EmployeeRegister } from "../interfaces";
 
 interface appState {
   isStartupActive: boolean;
@@ -9,6 +10,8 @@ interface appState {
   isInboxOpen: boolean;
   isSearchOpen: boolean;
   isNewsOpen: boolean;
+  isSupportOpen: boolean;
+  employees: EmployeeRegister[];
 }
 
 const initialState: appState = {
@@ -20,6 +23,8 @@ const initialState: appState = {
   isInboxOpen: false,
   isSearchOpen: false,
   isNewsOpen: false,
+  isSupportOpen: false,
+  employees: [],
 };
 
 const appSlice = createSlice({
@@ -50,6 +55,12 @@ const appSlice = createSlice({
     setIsNewsOpen: (state, action: PayloadAction<boolean>) => {
       state.isNewsOpen = action.payload;
     },
+    setIsSupportOpen: (state, action: PayloadAction<boolean>) => {
+      state.isSupportOpen = action.payload;
+    },
+    setEmployees: (state, action: PayloadAction<EmployeeRegister[]>) => {
+      state.employees = action.payload;
+    },
   },
 });
 
@@ -62,6 +73,8 @@ export const {
   setIsInboxOpen,
   setIsSearchOpen,
   setIsNewsOpen,
+  setIsSupportOpen,
+  setEmployees,
 } = appSlice.actions;
 
 export default appSlice.reducer;

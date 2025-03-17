@@ -1,6 +1,6 @@
 "use server";
 
-import { Employee, EmployeeLogin } from "@/lib/interfaces.js";
+import { Employee, EmployeeLogin, EmployeeRegister } from "@/lib/interfaces.js";
 import client from "./supabase";
 
 export async function createEmployee(employee: Employee) {
@@ -58,4 +58,24 @@ export async function checkEmployeeId(employeeId: string) {
   } else {
     return false;
   }
+}
+
+export async function getEmployees(): Promise<EmployeeRegister[]> {
+  const { data, error } = await client
+    .from("employee")
+    .select("employee_id, name, race, age, specialty, position, pin, banned");
+
+  if (error) {
+    throw error;
+  }
+
+  if (!data) {
+    return [];
+  }
+
+  return data.map((item) => ({
+    name: item.name,
+    specialty: item.specialty,
+    position: item.position,
+  })) as EmployeeRegister[];
 }

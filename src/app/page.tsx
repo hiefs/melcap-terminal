@@ -11,7 +11,8 @@ import {
   setUser,
 } from "@/lib/features/user-reducer";
 import { Loader } from "@/components/ui/loading-dots";
-import { setStartup } from "@/lib/features/app-reducer";
+import { setEmployees, setStartup } from "@/lib/features/app-reducer";
+import { getEmployees } from "@/utils/employee";
 
 export default function Home() {
   const user = useAppSelector((state) => state.user.user);
@@ -52,6 +53,12 @@ export default function Home() {
       window.localStorage.setItem("isLoggedIn", "true");
     }
   }, [user]);
+
+  useEffect(() => {
+    getEmployees().then((data) => {
+      dispatch(setEmployees(data));
+    });
+  }, [dispatch]);
 
   return (
     <div className="w-full h-full">

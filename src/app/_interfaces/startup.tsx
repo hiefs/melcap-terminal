@@ -27,6 +27,7 @@ export const Startup = (props: StartupProps) => {
   const { open, onClose } = props;
   const [isOpen, setIsOpen] = useState(open);
   const [activeStep, setActiveStep] = useState(1);
+  const [showSupport, setShowSupport] = useState(false);
   const [error, setError] = useState<boolean>(false);
   const [formData, setFormData] = useState<Employee>({
     name: "",
@@ -114,6 +115,7 @@ export const Startup = (props: StartupProps) => {
                 "Welcome to the Citadel Ministry of Employment & Labor's \nCareer Advancement Program Portal\n\nPlease Wait...",
                 5000,
                 "Welcome to the Citadel Ministry of Employment & Labor's \nCareer Advancement Program Portal\n\n Are you a returning user?",
+                800,
                 () => nextStep(),
               ]}
               wrapper="span"
@@ -353,6 +355,7 @@ export const Startup = (props: StartupProps) => {
               omitDeletionAnimation={true}
               sequence={[
                 "Welcome back! \n Please enter your empyloyee ID and pin.",
+                800,
                 () => nextStep(),
               ]}
               wrapper="span"
@@ -604,16 +607,32 @@ export const Startup = (props: StartupProps) => {
                 >
                   Login <ChevronRight size={14} />
                 </button>
+              </form>
+              <div className=" pl-2 pr-2 flex flex-row justify-center items-center">
                 <button
                   onClick={() => {
                     setActiveStep(1);
                     setError(false);
                   }}
-                  className="button border w-28 m-4 pl-2 pr-2 flex flex-row justify-center items-center"
+                  className="button border w-28 m-4"
                 >
                   Go Back
                 </button>
-              </form>
+                <button
+                  onClick={() => {
+                    setShowSupport(!showSupport);
+                  }}
+                  className="button border w-28 m-4"
+                >
+                  Support
+                </button>
+              </div>
+              {showSupport && (
+                <div className="text-center">
+                  <p>If you are having issues accessing your account.</p>
+                  <p>Please email support@owlbearmail.cc</p>
+                </div>
+              )}
             </div>
           )}
           {activeStep === 28 && (
