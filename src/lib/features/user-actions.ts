@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Role, setIsLoggedIn, setRole, setUser, User } from "./user-reducer";
 import { Employee } from "../interfaces";
 
-export const login = createAsyncThunk(
+export const userLogin = createAsyncThunk(
   "user/login",
   async (employee: Employee, { dispatch }) => {
     const user: User = {
@@ -18,7 +18,7 @@ export const login = createAsyncThunk(
   }
 );
 
-export const logout = createAsyncThunk(
+export const userLogout = createAsyncThunk(
   "user/logout",
   async (_, { dispatch }) => {
     dispatch(setUser({ eId: "", name: "", department: "", title: "" }));

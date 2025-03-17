@@ -11,11 +11,13 @@ import {
   setUser,
 } from "@/lib/features/user-reducer";
 import { Loader } from "@/components/ui/loading-dots";
+import { setStartup } from "@/lib/features/app-reducer";
 
 export default function Home() {
-  const [startupActive, setStartupActive] = useState(true);
-  const [isLoading, setIsLoading] = useState(true);
   const user = useAppSelector((state) => state.user.user);
+  const app = useAppSelector((state) => state.app);
+  const [isLoading, setIsLoading] = useState(true);
+  const isStartupActive = app.isStartupActive;
 
   const dispatch = useAppDispatch();
 
@@ -34,7 +36,7 @@ export default function Home() {
         dispatch(setRole(JSON.parse(roleFromLocalStorage)));
         dispatch(setIsLoggedIn(true));
 
-        setStartupActive(false);
+        dispatch(setStartup(false));
       }
 
       setTimeout(() => {
@@ -57,8 +59,8 @@ export default function Home() {
         <div className="flex flex-row justify-center items-center gap-4 m-auto h-full w-full">
           <Loader />
         </div>
-      ) : startupActive ? (
-        <Startup open={startupActive} onClose={() => setStartupActive(false)} />
+      ) : isStartupActive ? (
+        <Startup open={isStartupActive} />
       ) : (
         <Desktop user={user} />
       )}

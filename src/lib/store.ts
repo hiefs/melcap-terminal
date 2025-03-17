@@ -1,7 +1,9 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userReducer from "./features/user-reducer";
+import appReducer from "./features/app-reducer";
 
 const reducers = combineReducers({
+  app: appReducer,
   user: userReducer,
 });
 
