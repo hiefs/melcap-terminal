@@ -1,7 +1,14 @@
 import { Taskbar } from "@/components/taskbar";
 import { DesktopIcon } from "@/components/ui/desktop-icon";
+import { User } from "@/lib/features/user-reducer";
 
-export const Desktop = () => {
+interface DesktopProps {
+  user: User;
+}
+
+export const Desktop = (props: DesktopProps) => {
+  const { user } = props;
+  console.log(user);
   return (
     <div className="flex w-full h-full flex-col citadel">
       <div className="flex-grow relative p-8 ">

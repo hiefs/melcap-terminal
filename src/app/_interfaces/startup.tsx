@@ -14,6 +14,14 @@ import {
   loginEmployee,
 } from "@/utils/employee";
 import { Loader } from "@/components/ui/loading-dots";
+import { useAppDispatch } from "@/lib/hooks";
+import {
+  Role,
+  setIsLoggedIn,
+  setRole,
+  setUser,
+  User,
+} from "@/lib/features/user-reducer";
 
 interface StartupProps {
   open: boolean;
@@ -41,12 +49,27 @@ export const Startup = (props: StartupProps) => {
     pin: "",
   });
 
+  const dispatch = useAppDispatch();
+
+  const setStoreUser = (data: Employee) => {
+    const user: User = {
+      eId: data.employee_id,
+      name: data.name,
+      department: data.specialty,
+      title: data.position,
+    };
+    dispatch(setUser(user));
+    dispatch(setRole(Role.User));
+    dispatch(setIsLoggedIn(true));
+  };
+
   const nextStep = () => {
     setActiveStep(activeStep + 1);
   };
 
   const endstartup = (data: Employee) => {
     submitEmployee(data);
+    setStoreUser(data);
     onClose?.();
     setIsOpen(false);
   };
@@ -57,6 +80,7 @@ export const Startup = (props: StartupProps) => {
         setError(true);
         setActiveStep(26);
       } else {
+        setStoreUser(res as Employee);
         setError(false);
         onClose?.();
         setIsOpen(false);

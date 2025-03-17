@@ -1,13 +1,67 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Startup } from "./_interfaces/startup";
 import { Desktop } from "./_interfaces/desktop";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import {
+  Role,
+  setIsLoggedIn,
+  setRole,
+  setUser,
+} from "@/lib/features/user-reducer";
+import { Loader } from "@/components/ui/loading-dots";
 
 export default function Home() {
   const [startupActive, setStartupActive] = useState(true);
-  return (
-    <div className="w-full h-full">{startupActive ? <Startup open={startupActive} onClose={() => setStartupActive(false)} /> : <Desktop />}</div>
+  const [isLoading, setIsLoading] = useState(true);
+  const user = useAppSelector((state) => state.user.user);
 
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const userFromLocalStorage = window.localStorage.getItem("user");
+      const roleFromLocalStorage = window.localStorage.getItem("role");
+      const loginFromLocalStorage = window.localStorage.getItem("isLoggedIn");
+
+      if (
+        loginFromLocalStorage === "true" &&
+        userFromLocalStorage &&
+        roleFromLocalStorage
+      ) {
+        dispatch(setUser(JSON.parse(userFromLocalStorage)));
+        dispatch(setRole(JSON.parse(roleFromLocalStorage)));
+        dispatch(setIsLoggedIn(true));
+
+        setStartupActive(false);
+      }
+
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 2000);
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && user.eId !== "") {
+      window.localStorage.setItem("user", JSON.stringify(user));
+      window.localStorage.setItem("role", JSON.stringify(Role.User));
+      window.localStorage.setItem("isLoggedIn", "true");
+    }
+  }, [user]);
+
+  return (
+    <div className="w-full h-full">
+      {isLoading ? (
+        <div className="flex flex-row justify-center items-center gap-4 m-auto h-full w-full">
+          <Loader />
+        </div>
+      ) : startupActive ? (
+        <Startup open={startupActive} onClose={() => setStartupActive(false)} />
+      ) : (
+        <Desktop user={user} />
+      )}
+    </div>
   );
 }
