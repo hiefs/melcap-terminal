@@ -1,18 +1,14 @@
 export const SupportWindow = () => {
   return (
     <div className="w-full flex flex-col h-full justify-center items-center m-auto">
-      <p className="text-center p-4">
-        For any issues with the C-MELCAP Portal, please email:
-      </p>
-      <p className="text-rose-400">support@owlbearmail.cc</p>
-      <div className="text-center p-4">
-        <p>Created by hiefs</p>
+      <p className="text-center p-4">How to get help</p>
+      <div className="text-center">
         <a
           className="text-blue-400 underline"
-          href="https://github.com/hiefs/terminal"
+          href="https://github.com/hiefs/terminal/issues"
           target="_blank"
         >
-          Github
+          Submit an Issue
         </a>
       </div>
     </div>

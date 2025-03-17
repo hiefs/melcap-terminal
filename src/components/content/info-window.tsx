@@ -14,11 +14,11 @@ export const InfoWindow = (props: InfoWindowProps) => {
 
   return (
     <div>
-      <p className="mb-4">Welcome {user.name}</p>
+      <p className="mb-4">Name: {user.name}</p>
+      <p>Employee ID: {user.eId}</p>
       <p>Race: {capitalizeFirstLetter(user.race)}</p>
       <p className="mb-4">Age: {user.age}</p>
 
-      <p>Employee ID: {user.eId}</p>
       <p>Department: {user.department}</p>
       <p>Position: {user.title}</p>
     </div>

@@ -118,7 +118,11 @@ export const Window = (props: WindowProps) => {
                 </div>
               )}
             </div>
-            <div id="window_content" className="p-2">
+            <div
+              id="window_content"
+              className="p-2 overflow-auto"
+              style={{ height: `calc(${dims.h}px - 40px)` }}
+            >
               {children}
             </div>
             <button

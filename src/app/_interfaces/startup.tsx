@@ -630,7 +630,13 @@ export const Startup = (props: StartupProps) => {
               {showSupport && (
                 <div className="text-center">
                   <p>If you are having issues accessing your account.</p>
-                  <p>Please email support@owlbearmail.cc</p>
+                  <a
+                    className="text-blue-400 underline"
+                    href="https://github.com/hiefs/terminal/issues"
+                    target="_blank"
+                  >
+                    Submit an Issue
+                  </a>
                 </div>
               )}
             </div>

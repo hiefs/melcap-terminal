@@ -134,7 +134,7 @@ export const Desktop = () => {
           width={300}
           height={300}
           title={"Info"}
-          start={{ x: 360, y: 30 }}
+          start={{ x: 20, y: 20 }}
           open={isInfoOpen}
           onClose={() => dispatch(setIsInfoOpen(false))}
           zIndex={getZIndex("info")}
@@ -146,7 +146,7 @@ export const Desktop = () => {
           width={430}
           height={300}
           title={"Tasks"}
-          start={{ x: 130, y: 30 }}
+          start={{ x: 30, y: 30 }}
           open={isTasksOpen}
           onClose={() => dispatch(setIsTasksOpen(false))}
           zIndex={getZIndex("tasks")}
@@ -158,7 +158,7 @@ export const Desktop = () => {
           width={400}
           height={300}
           title={"Files"}
-          start={{ x: 90, y: 30 }}
+          start={{ x: 40, y: 40 }}
           open={isFilesOpen}
           onClose={() => dispatch(setIsFilesOpen(false))}
           zIndex={getZIndex("files")}
@@ -170,7 +170,7 @@ export const Desktop = () => {
           width={400}
           height={300}
           title={"Messages"}
-          start={{ x: 130, y: 30 }}
+          start={{ x: 50, y: 50 }}
           open={isInboxOpen}
           onClose={() => dispatch(setIsInboxOpen(false))}
           zIndex={getZIndex("inbox")}
@@ -180,9 +180,9 @@ export const Desktop = () => {
         </Window>
         <Window
           width={400}
-          height={300}
+          height={500}
           title={"Employee Search"}
-          start={{ x: 130, y: 30 }}
+          start={{ x: 60, y: 60 }}
           open={isSearchOpen}
           onClose={() => dispatch(setIsSearchOpen(false))}
           zIndex={getZIndex("search")}
@@ -194,7 +194,7 @@ export const Desktop = () => {
           width={400}
           height={300}
           title={"News"}
-          start={{ x: 130, y: 30 }}
+          start={{ x: 70, y: 70 }}
           open={isNewsOpen}
           onClose={() => dispatch(setIsNewsOpen(false))}
           zIndex={getZIndex("news")}
@@ -204,9 +204,9 @@ export const Desktop = () => {
         </Window>
         <Window
           width={400}
-          height={250}
+          height={150}
           title={"Support"}
-          start={{ x: 110, y: 40 }}
+          start={{ x: 80, y: 80 }}
           open={isSupportOpen}
           onClose={() => dispatch(setIsSupportOpen(false))}
           zIndex={getZIndex("support")}

@@ -9,7 +9,7 @@ interface SearchItemProps {
 
 const SearchItem: React.FC<SearchItemProps> = ({ name, department }) => {
   return (
-    <div className=" bg-white w-full h-18 flex flex-col justify-center border-2 p-6 text-black">
+    <div className=" bg-white w-full h-24 flex flex-col justify-center border-2 p-6 text-black hover:bg-neutral-300">
       <p>Name: {name}</p>
       <p>Department: {department}</p>
     </div>
@@ -29,8 +29,8 @@ export const SearchWindow = () => {
   );
 
   return (
-    <div className="w-full flex flex-col h-full overflow-auto">
-      <div className="flex flex-col justify-center items-center m-auto w-full">
+    <div className="w-full flex flex-col h-full">
+      <div className="flex flex-col justify-center items-center w-full p-4">
         <p>Search an employee</p>
         <input
           className="input border ml-2 mb-4 mt-4 p-1 w-1/2"
@@ -40,11 +40,13 @@ export const SearchWindow = () => {
         />
       </div>
 
-      {filteredEmployees.map((employee, index) => (
-        <div key={index} className="mb-4">
-          <SearchItem name={employee.name} department={employee.specialty} />
-        </div>
-      ))}
+      <div className="flex-1 overflow-y-auto p-4">
+        {filteredEmployees.map((employee, index) => (
+          <div key={index} className="mb-4">
+            <SearchItem name={employee.name} department={employee.specialty} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

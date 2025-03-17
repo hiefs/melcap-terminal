@@ -1,3 +1,9 @@
-# Welcome to the Citadel Ministry of Education and Labor Career Advancement Program
+# MELCAP
 
-Please remember to complete your tasks.
+## Welcome to the MELCAP Program
+
+The Citadel Ministry of Education and Labor's Career Advancement Program help place new and veteran workers in new and exciting careers across the Citadel. There are no requirements to apply, simply share a little information, tell us about yourself and try out your new career!
+
+Not a great fit? You can always try another!
+
+Apply today!
