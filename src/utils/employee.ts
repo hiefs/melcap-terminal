@@ -77,5 +77,6 @@ export async function getEmployees(): Promise<EmployeeRegister[]> {
     name: item.name,
     specialty: item.specialty,
     position: item.position,
+    employed: item.banned,
   })) as EmployeeRegister[];
 }

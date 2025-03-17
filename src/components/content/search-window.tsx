@@ -24,8 +24,10 @@ export const SearchWindow = () => {
     setSearchTerm(term);
   };
 
-  const filteredEmployees = employees.filter((employee) =>
-    employee.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredEmployees = employees.filter(
+    (employee) =>
+      !employee.employed &&
+      employee.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (

@@ -1,3 +1,4 @@
+// Employee Interfaces
 export interface Employee {
   id?: string;
   created_at?: string;
@@ -20,4 +21,5 @@ export interface EmployeeRegister {
   name: string;
   specialty: string;
   position: string;
+  employed: boolean;
 }

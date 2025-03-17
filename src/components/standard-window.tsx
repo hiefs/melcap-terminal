@@ -101,11 +101,6 @@ export const Window = (props: WindowProps) => {
               className="flex handle h-8 p-1 items-center border-b justify-between"
               onClick={onWindowClick}
             >
-              <button className="button border ml-1" onClick={handleClose}>
-                <div className="w-4 h-4 flex items-center justify-center">
-                  <X size={14} />
-                </div>
-              </button>
               {title ? (
                 <div className="window w-full flex flex-row items-center">
                   <WindowSpacer />
@@ -117,6 +112,11 @@ export const Window = (props: WindowProps) => {
                   <WindowSpacer />
                 </div>
               )}
+              <button className="button border mr-1" onClick={handleClose}>
+                <div className="w-4 h-4 flex items-center justify-center">
+                  <X size={14} />
+                </div>
+              </button>
             </div>
             <div
               id="window_content"

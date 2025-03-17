@@ -29,6 +29,7 @@ export const Startup = (props: StartupProps) => {
   const [activeStep, setActiveStep] = useState(1);
   const [showSupport, setShowSupport] = useState(false);
   const [error, setError] = useState<boolean>(false);
+  const [banned, setBanned] = useState<boolean>(false);
   const [formData, setFormData] = useState<Employee>({
     name: "",
     race: "",
@@ -69,11 +70,18 @@ export const Startup = (props: StartupProps) => {
         setError(true);
         setActiveStep(26);
       } else {
-        setStoreUser(res as Employee);
-        setError(false);
-        onClose?.();
-        dispatch(setStartup(false));
-        setIsOpen(false);
+        const result = res as Employee;
+        if (result.banned === true) {
+          setBanned(true);
+          setActiveStep(26);
+        } else {
+          setBanned(false);
+          setStoreUser(result);
+          setError(false);
+          onClose?.();
+          dispatch(setStartup(false));
+          setIsOpen(false);
+        }
       }
     });
   };
@@ -561,6 +569,11 @@ export const Startup = (props: StartupProps) => {
                   Log in is not valid. Pleasse Try again
                 </p>
               )}
+              {banned && (
+                <p className="bg-red-600 pl-2 pr-2">
+                  The account is not accessible. Please contact support.
+                </p>
+              )}
               <form className="flex flex-col justify-center items-center gap-2">
                 <div>
                   <label className="mr-2" htmlFor="id">
@@ -629,14 +642,17 @@ export const Startup = (props: StartupProps) => {
               </div>
               {showSupport && (
                 <div className="text-center">
-                  <p>If you are having issues accessing your account.</p>
-                  <a
-                    className="text-blue-400 underline"
-                    href="https://github.com/hiefs/terminal/issues"
-                    target="_blank"
-                  >
-                    Submit an Issue
-                  </a>
+                  <p>
+                    If you are having issues accessing your account{" "}
+                    <a
+                      className="text-blue-400 underline"
+                      href="https://github.com/hiefs/terminal/issues"
+                      target="_blank"
+                    >
+                      submit an issue
+                    </a>
+                    .
+                  </p>
                 </div>
               )}
             </div>
@@ -644,6 +660,19 @@ export const Startup = (props: StartupProps) => {
           {activeStep === 28 && (
             <div className="flex flex-row justify-center items-center gap-4 mt-8">
               <Loader />
+            </div>
+          )}
+          {activeStep > 2 && activeStep < 26 && (
+            <div className="flex flex-row justify-center items-end gap-4 mt-8">
+              <button
+                onClick={() => {
+                  setActiveStep(1);
+                  setError(false);
+                }}
+                className="button border border-red-400 text-red-400 pl-2 pr-2 m-4"
+              >
+                Cancel Enrollment
+              </button>
             </div>
           )}
         </div>
