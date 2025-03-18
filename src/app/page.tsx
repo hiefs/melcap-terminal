@@ -19,6 +19,8 @@ import { getFiles } from "@/utils/file";
 import { setFiles } from "@/lib/features/file-reducer";
 import { getNews } from "@/utils/news";
 import { setNews } from "@/lib/features/news-reducer";
+import { BrowserView, MobileView } from "react-device-detect";
+import { Mobile } from "./_interfaces/mobile";
 
 export default function Home() {
   const user = useAppSelector((state) => state.user.user);
@@ -87,15 +89,21 @@ export default function Home() {
 
   return (
     <div className="w-full h-full">
-      {isLoading ? (
-        <div className="flex flex-row justify-center items-center gap-4 m-auto h-full w-full">
-          <Loader />
-        </div>
-      ) : isStartupActive ? (
-        <Startup open={isStartupActive} />
-      ) : (
-        <Desktop />
-      )}
+      <BrowserView className="w-full h-full">
+        {" "}
+        {isLoading ? (
+          <div className="flex flex-row justify-center items-center gap-4 m-auto h-full w-full">
+            <Loader />
+          </div>
+        ) : isStartupActive ? (
+          <Startup open={isStartupActive} />
+        ) : (
+          <Desktop />
+        )}
+      </BrowserView>
+      <MobileView className="w-full h-full">
+        <Mobile />
+      </MobileView>
     </div>
   );
 }

@@ -143,8 +143,8 @@ export const Desktop = () => {
           <InfoWindow user={user} />
         </Window>
         <Window
-          width={1200}
-          height={600}
+          width={400}
+          height={400}
           title={"Tasks"}
           start={{ x: 30, y: 30 }}
           open={isTasksOpen}
