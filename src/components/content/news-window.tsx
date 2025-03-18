@@ -6,28 +6,54 @@ import { useState } from "react";
 interface NewsListProps {
   title: string;
   author: string;
+  selected: boolean;
 }
 
-const NewsList: React.FC<NewsListProps> = ({ title, author }) => {
+const NewsList: React.FC<NewsListProps> = ({ title, author, selected }) => {
   return (
-    <div className="bg-black w-full h-18 flex flex-col p-2 justify-center border-2 hover:bg-neutral-800 ">
+    <div
+      className={
+        "w-full h-18 flex flex-col justify-center border-2 p-2 " +
+        `${
+          selected
+            ? "bg-neutral-300 text-black"
+            : "bg-black hover:bg-neutral-800 "
+        }`
+      }
+    >
       <p className="text-base overflow-hidden whitespace-nowrap truncate w-full">
         {title}
       </p>
-      <p className="text-xs">{author}</p>
+      <p className="text-xs">By {author}</p>
     </div>
   );
 };
 
 export const NewsWindow = () => {
-  const [selectedArticle, setSelectedArticle] = useState<News>();
+  const [selectedArticle, setSelectedArticle] = useState<News | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const news = useAppSelector((state) => state.news.news);
+
+  const handleTileClick = (tile: News, index: number) => {
+    if (selectedIndex === index) {
+      setSelectedArticle(null);
+      setSelectedIndex(null);
+    } else {
+      setSelectedArticle(tile);
+      setSelectedIndex(index);
+    }
+  };
+
   return (
     <>
       <div className="w-full flex flex-col h-1/2 overflow-auto gap-2">
         {news.map((tile, index) => (
-          <div key={index} onClick={() => setSelectedArticle(tile)}>
-            <NewsList title={tile.title} author={tile.author} />
+          <div key={index} onClick={() => handleTileClick(tile, index)}>
+            <NewsList
+              title={tile.title}
+              author={tile.author}
+              selected={selectedIndex === index}
+            />
           </div>
         ))}
       </div>
