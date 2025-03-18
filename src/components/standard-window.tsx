@@ -11,7 +11,7 @@ interface WindowProps {
   width: number;
   height: number;
   zIndex: number;
-  onWindowClick: () => void;
+  onWindowClick?: () => void;
   title?: string;
   start?: { x: number; y: number };
   onClose?: () => void;

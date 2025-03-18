@@ -23,3 +23,21 @@ export interface EmployeeRegister {
   position: string;
   employed: boolean;
 }
+
+// Inbox Interfaces
+export interface Mail {
+  id?: string;
+  created_at?: string;
+  date: Date;
+  sender: string;
+  subject: string;
+  message: string;
+}
+
+// Files Interfaces
+export interface File {
+  id?: string;
+  created_at?: string;
+  title: string;
+  img: string;
+}

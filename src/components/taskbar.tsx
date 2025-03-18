@@ -31,7 +31,7 @@ export const Taskbar = () => {
     dispatch(setStartup(true));
   };
 
-  const futureDate = addYears(dateState, 148);
+  const futureDate = addYears(dateState, 146);
   return (
     <div className="pl-4 flex flex-row p-2 w-full justify-between z-50 fixed bottom-0 bg-(--background)">
       <p className="flex text-left pr-8 gap-4">

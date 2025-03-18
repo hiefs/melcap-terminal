@@ -646,7 +646,7 @@ export const Startup = (props: StartupProps) => {
                     If you are having issues accessing your account{" "}
                     <a
                       className="text-blue-400 underline"
-                      href="https://github.com/hiefs/terminal/issues"
+                      href="https://github.com/hiefs/melcap-terminal/issues"
                       target="_blank"
                     >
                       submit an issue

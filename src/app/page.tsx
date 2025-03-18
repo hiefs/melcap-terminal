@@ -13,6 +13,10 @@ import {
 import { Loader } from "@/components/ui/loading-dots";
 import { setEmployees, setStartup } from "@/lib/features/app-reducer";
 import { getEmployees } from "@/utils/employee";
+import { getMail } from "@/utils/mail";
+import { setMail } from "@/lib/features/mail-reducer";
+import { getFiles } from "@/utils/file";
+import { setFiles } from "@/lib/features/file-reducer";
 
 export default function Home() {
   const user = useAppSelector((state) => state.user.user);
@@ -39,13 +43,10 @@ export default function Home() {
 
         dispatch(setStartup(false));
       }
-
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 2000);
     }
   }, [dispatch]);
 
+  // Separate useEffect for user state updates
   useEffect(() => {
     if (typeof window !== "undefined" && user.eId !== "") {
       window.localStorage.setItem("user", JSON.stringify(user));
@@ -54,10 +55,28 @@ export default function Home() {
     }
   }, [user]);
 
+  // Separate useEffect for fetching data
   useEffect(() => {
     getEmployees().then((data) => {
       dispatch(setEmployees(data));
     });
+
+    getMail().then((data) => {
+      const currentMonth = new Date().getMonth();
+      const filteredMail = data.filter((mail) => {
+        const mailDate = new Date(mail.date);
+        return mailDate.getMonth() === currentMonth;
+      });
+      dispatch(setMail(filteredMail));
+    });
+
+    getFiles().then((data) => {
+      dispatch(setFiles(data));
+    });
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
   }, [dispatch]);
 
   return (

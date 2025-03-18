@@ -1,10 +1,14 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userReducer from "./features/user-reducer";
 import appReducer from "./features/app-reducer";
+import mailReducer from "./features/mail-reducer";
+import fileReducer from "./features/file-reducer";
 
 const reducers = combineReducers({
   app: appReducer,
   user: userReducer,
+  mail: mailReducer,
+  file: fileReducer,
 });
 
 export const makeStore = () => {
