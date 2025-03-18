@@ -25,7 +25,28 @@ export async function createEmployee(employee: Employee) {
   }
 }
 
-export async function loginEmployee(employee: EmployeeLogin) {
+export async function getEmployees(): Promise<EmployeeRegister[]> {
+  const { data, error } = await client
+    .from("employee")
+    .select("employee_id, name, race, age, specialty, position, pin, banned");
+
+  if (error) {
+    throw error;
+  }
+
+  if (!data) {
+    return [];
+  }
+
+  return data.map((item) => ({
+    name: item.name,
+    specialty: item.specialty,
+    position: item.position,
+    employed: item.banned,
+  })) as EmployeeRegister[];
+}
+
+export async function matchEmployee(employee: EmployeeLogin) {
   const { data, error } = await client
     .from("employee")
     .select("*")
@@ -58,25 +79,4 @@ export async function checkEmployeeId(employeeId: string) {
   } else {
     return false;
   }
-}
-
-export async function getEmployees(): Promise<EmployeeRegister[]> {
-  const { data, error } = await client
-    .from("employee")
-    .select("employee_id, name, race, age, specialty, position, pin, banned");
-
-  if (error) {
-    throw error;
-  }
-
-  if (!data) {
-    return [];
-  }
-
-  return data.map((item) => ({
-    name: item.name,
-    specialty: item.specialty,
-    position: item.position,
-    employed: item.banned,
-  })) as EmployeeRegister[];
 }

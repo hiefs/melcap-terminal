@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 import { sourceCode } from "../layout";
 import { UtilityButton } from "@/components/ui/utility-button";
@@ -11,7 +11,7 @@ import { customAlphabet } from "nanoid";
 import {
   checkEmployeeId,
   createEmployee,
-  loginEmployee,
+  matchEmployee,
 } from "@/utils/employee";
 import { Loader } from "@/components/ui/loading-dots";
 import { useAppDispatch } from "@/lib/hooks";
@@ -67,7 +67,7 @@ export const Startup = (props: StartupProps) => {
   const login = (data: EmployeeLogin) => {
     setError(false);
     setBanned(false);
-    loginEmployee(data).then((res) => {
+    matchEmployee(data).then((res) => {
       if (res === null) {
         setError(true);
         setActiveStep(26);
@@ -499,7 +499,7 @@ export const Startup = (props: StartupProps) => {
                         specialty: spec.department,
                         position:
                           spec.positions[
-                            Math.floor(Math.random() * spec.positions.length)
+                          Math.floor(Math.random() * spec.positions.length)
                           ],
                       }));
                       nextStep();
