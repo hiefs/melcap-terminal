@@ -46,7 +46,7 @@ export const NewsWindow = () => {
 
   return (
     <>
-      <div className="w-full flex flex-col h-1/2 overflow-auto gap-2">
+      <div className="w-full flex flex-col h-1/3 overflow-auto gap-2">
         {news.map((tile, index) => (
           <div key={index} onClick={() => handleTileClick(tile, index)}>
             <NewsList
@@ -57,7 +57,7 @@ export const NewsWindow = () => {
           </div>
         ))}
       </div>
-      <div className="w-full flex flex-col h-1/2 overflow-auto border-t-2 border-dashed overflow-auto">
+      <div className="w-full flex flex-col h-2/3 overflow-auto border-t-2 border-dashed overflow-auto">
         {selectedArticle && (
           <div className="mt-8">
             <p className="text-center mb-8">{selectedArticle.network}</p>

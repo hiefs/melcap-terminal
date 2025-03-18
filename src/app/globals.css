@@ -25,6 +25,18 @@ body {
   cursor: url("./../../public/cursor.svg"), auto;
 }
 
+h1 {
+  font-size: larger;
+}
+
+h2 {
+  font-size: large;
+}
+
+h3 {
+  font-size: medium;
+}
+
 .button {
   cursor: url("./../../public/cursor_link.svg"), auto;
 }

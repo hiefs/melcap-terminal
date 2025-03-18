@@ -9,6 +9,14 @@ export const UtilityButton = (props: UtilityButtonProps) => {
 
   const handleClick = () => {
     onClick?.();
-  }
-  return <button onClick={handleClick} disabled={disabled} className="button border pl-4 pr-4">{text}</button>;
+  };
+  return (
+    <button
+      onClick={handleClick}
+      disabled={disabled}
+      className="button border pl-4 pr-4 hover:bg-gray-200 hover:text-black"
+    >
+      {text}
+    </button>
+  );
 };

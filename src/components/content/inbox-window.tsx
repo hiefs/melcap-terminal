@@ -3,6 +3,7 @@
 import { useAppSelector } from "@/lib/hooks";
 import { Mail } from "@/lib/interfaces";
 import { useState } from "react";
+import Markdown from "react-markdown";
 
 interface InboxNotificationProps {
   sender: string;
@@ -72,9 +73,9 @@ export const InboxWindow = () => {
 
             {selectedMessage.message.split("\\n").map((line, index) => {
               return (
-                <p className="mb-4" key={index}>
-                  {line}
-                </p>
+                <div className="mb-4" key={index}>
+                  <Markdown>{line}</Markdown>
+                </div>
               );
             })}
           </div>
