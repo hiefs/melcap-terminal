@@ -65,6 +65,8 @@ export const Startup = (props: StartupProps) => {
   };
 
   const login = (data: EmployeeLogin) => {
+    setError(false);
+    setBanned(false);
     loginEmployee(data).then((res) => {
       if (res === null) {
         setError(true);
@@ -309,7 +311,7 @@ export const Startup = (props: StartupProps) => {
                 "Please wait...",
                 5000,
                 "Thank you.",
-                5000,
+                2000,
                 "We have found a career for you!",
                 2000,
                 "We have found a career for you! \n\n Please wait while we generate your employee ID.",
@@ -340,8 +342,8 @@ export const Startup = (props: StartupProps) => {
                 "Please wait...",
                 5000,
                 "Thank you.",
-                5000,
-                "Congratulations! You have been successfully enrolled in the \nCitadel Ministry of Employment & Labor's \nCareer Advancement Program.",
+                2000,
+                "Congratulations! \n\nYou have been successfully enrolled in the \nCitadel Ministry of Employment & Labor's \nCareer Advancement Program.",
                 5000,
                 "Redirecting to the terminal...",
                 10000,
@@ -566,7 +568,7 @@ export const Startup = (props: StartupProps) => {
             <div className="flex flex-col justify-center items-center gap-2 mt-8">
               {error && (
                 <p className="bg-red-600 pl-2 pr-2">
-                  Log in is not valid. Pleasse Try again
+                  Log in is not valid. Please try again
                 </p>
               )}
               {banned && (
@@ -662,7 +664,7 @@ export const Startup = (props: StartupProps) => {
               <Loader />
             </div>
           )}
-          {activeStep > 2 && activeStep < 26 && (
+          {activeStep > 2 && activeStep < 19 && (
             <div className="flex flex-row justify-center items-end gap-4 mt-8">
               <button
                 onClick={() => {
