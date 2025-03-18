@@ -13,6 +13,7 @@ export interface User {
   race: string;
   age: number;
   enrolledDate?: string;
+  unemployed?: boolean;
 }
 
 interface userState {

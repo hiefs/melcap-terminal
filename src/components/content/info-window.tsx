@@ -1,4 +1,8 @@
 import { User } from "@/lib/features/user-reducer";
+import { UtilityButton } from "../ui/utility-button";
+import { useAppDispatch } from "@/lib/hooks";
+import { userLogout } from "@/lib/features/user-actions";
+import { setStartup } from "@/lib/features/app-reducer";
 
 interface InfoWindowProps {
   user: User;
@@ -11,6 +15,18 @@ const capitalizeFirstLetter = (str: string) => {
 
 export const InfoWindow = (props: InfoWindowProps) => {
   const { user } = props;
+  const dispatch = useAppDispatch();
+
+  const logout = () => {
+    if (typeof window !== "undefined") {
+      window.localStorage.removeItem("user");
+      window.localStorage.removeItem("role");
+      window.localStorage.removeItem("isLoggedIn");
+    }
+
+    dispatch(userLogout());
+    dispatch(setStartup(true));
+  };
 
   return (
     <div>
@@ -21,6 +37,9 @@ export const InfoWindow = (props: InfoWindowProps) => {
 
       <p>Department: {user.department}</p>
       <p>Position: {user.title}</p>
+      <div className="mt-4">
+        <UtilityButton text="Log out" onClick={() => logout()} />
+      </div>
     </div>
   );
 };

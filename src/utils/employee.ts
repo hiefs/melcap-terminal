@@ -2,6 +2,7 @@
 
 import { Employee, EmployeeLogin, EmployeeRegister } from "@/lib/interfaces.js";
 import client from "./supabase";
+import { User } from "@/lib/features/user-reducer";
 
 export async function createEmployee(employee: Employee) {
   const { error } = await client
@@ -42,7 +43,7 @@ export async function getEmployees(): Promise<EmployeeRegister[]> {
     name: item.name,
     specialty: item.specialty,
     position: item.position,
-    employed: item.banned,
+    unemployed: item.banned,
   })) as EmployeeRegister[];
 }
 
@@ -60,7 +61,18 @@ export async function matchEmployee(employee: EmployeeLogin) {
   if (data.length === 0) {
     return null;
   } else {
-    return data[0];
+    const user = data[0];
+    const employee: User = {
+      eId: user.employee_id,
+      name: user.name,
+      department: user.specialty,
+      title: user.position,
+      race: user.race,
+      age: user.age,
+      enrolledDate: user.created_at,
+      unemployed: user.banned,
+    };
+    return employee;
   }
 }
 

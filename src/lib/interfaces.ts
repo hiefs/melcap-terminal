@@ -21,7 +21,7 @@ export interface EmployeeRegister {
   name: string;
   specialty: string;
   position: string;
-  employed: boolean;
+  unemployed: boolean;
 }
 
 // Inbox Interfaces

@@ -26,7 +26,7 @@ export const SearchWindow = () => {
 
   const filteredEmployees = employees.filter(
     (employee) =>
-      !employee.employed &&
+      !employee.unemployed &&
       employee.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 

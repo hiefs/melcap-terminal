@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Role, setIsLoggedIn, setRole, setUser, User } from "./user-reducer";
-import { Employee } from "../interfaces";
 import {
   setIsInfoOpen,
   setIsTasksOpen,
@@ -12,17 +11,7 @@ import {
 
 export const userLogin = createAsyncThunk(
   "user/login",
-  async (employee: Employee, { dispatch }) => {
-    const user: User = {
-      eId: employee.employee_id,
-      name: employee.name,
-      department: employee.specialty,
-      title: employee.position,
-      race: employee.race,
-      age: employee.age,
-      enrolledDate: employee.created_at,
-    };
-
+  async (user: User, { dispatch }) => {
     dispatch(setUser(user));
     dispatch(setRole(Role.User));
     dispatch(setIsLoggedIn(true));

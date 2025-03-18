@@ -17,6 +17,7 @@ import { Loader } from "@/components/ui/loading-dots";
 import { useAppDispatch } from "@/lib/hooks";
 import { userLogin } from "@/lib/features/user-actions";
 import { setStartup } from "@/lib/features/app-reducer";
+import { User } from "@/lib/features/user-reducer";
 
 interface StartupProps {
   open: boolean;
@@ -48,7 +49,7 @@ export const Startup = (props: StartupProps) => {
 
   const dispatch = useAppDispatch();
 
-  const setStoreUser = (data: Employee) => {
+  const setStoreUser = (data: User) => {
     dispatch(userLogin(data));
   };
 
@@ -57,8 +58,18 @@ export const Startup = (props: StartupProps) => {
   };
 
   const endstartup = (data: Employee) => {
+    const newUser: User = {
+      eId: data.employee_id,
+      name: data.name,
+      department: data.specialty,
+      title: data.position,
+      race: data.race,
+      age: data.age,
+      enrolledDate: data.created_at,
+      unemployed: data.banned,
+    };
     submitEmployee(data);
-    setStoreUser(data);
+    setStoreUser(newUser);
     onClose?.();
     dispatch(setStartup(false));
     setIsOpen(false);
@@ -72,8 +83,8 @@ export const Startup = (props: StartupProps) => {
         setError(true);
         setActiveStep(26);
       } else {
-        const result = res as Employee;
-        if (result.banned === true) {
+        const result = res as User;
+        if (result.unemployed === true) {
           setBanned(true);
           setActiveStep(26);
         } else {
@@ -363,8 +374,9 @@ export const Startup = (props: StartupProps) => {
           {(activeStep === 26 || activeStep === 27) && (
             <TypeAnimation
               omitDeletionAnimation={true}
+              speed={75}
               sequence={[
-                "Welcome back! \n Please enter your empyloyee ID and pin.",
+                "Please enter your empyloyee ID and pin.",
                 800,
                 () => nextStep(),
               ]}
@@ -499,7 +511,7 @@ export const Startup = (props: StartupProps) => {
                         specialty: spec.department,
                         position:
                           spec.positions[
-                          Math.floor(Math.random() * spec.positions.length)
+                            Math.floor(Math.random() * spec.positions.length)
                           ],
                       }));
                       nextStep();

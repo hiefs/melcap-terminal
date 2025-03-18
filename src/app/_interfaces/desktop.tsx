@@ -53,10 +53,10 @@ export const Desktop = () => {
   return (
     <div className="flex w-full h-full flex-col citadel">
       <div className="flex-grow relative p-12">
-        <div className="absolute h-2/3 top-2 left-2 pl-8 pr-8 pt-4 pb-4 z-0">
+        <div className="absolute h-full top-2 left-2 pl-8 pr-8 pt-4 pb-4 z-0">
           <div
             id="terminal_icons"
-            className="flex flex-col justify-center items-center gap-8"
+            className="flex flex-col h-full flex-wrap justify-start items-center gap-8"
           >
             {/* Desktop Icons */}
             <DesktopIcon
