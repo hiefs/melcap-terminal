@@ -41,3 +41,15 @@ export interface File {
   title: string;
   img: string;
 }
+
+// News Interfaces
+export interface News {
+  id?: string;
+  created_at?: string;
+  date_posted: Date;
+  network: string;
+  title: string;
+  author: string;
+  article: string;
+  img?: string;
+}

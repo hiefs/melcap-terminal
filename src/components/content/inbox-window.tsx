@@ -15,7 +15,7 @@ const InboxNotification: React.FC<InboxNotificationProps> = ({
 }) => {
   return (
     <div className="bg-black w-full h-18 flex flex-col justify-center border-2 p-6 hover:bg-neutral-800">
-      <p className="text-base">{sender}</p>
+      <p className="text-base text-ellipsis">{sender}</p>
       <p className="text-xs">{subject}</p>
     </div>
   );

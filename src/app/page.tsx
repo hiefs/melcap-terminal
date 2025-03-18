@@ -17,6 +17,8 @@ import { getMail } from "@/utils/mail";
 import { setMail } from "@/lib/features/mail-reducer";
 import { getFiles } from "@/utils/file";
 import { setFiles } from "@/lib/features/file-reducer";
+import { getNews } from "@/utils/news";
+import { setNews } from "@/lib/features/news-reducer";
 
 export default function Home() {
   const user = useAppSelector((state) => state.user.user);
@@ -72,6 +74,10 @@ export default function Home() {
 
     getFiles().then((data) => {
       dispatch(setFiles(data));
+    });
+
+    getNews().then((data) => {
+      dispatch(setNews(data));
     });
 
     setTimeout(() => {
