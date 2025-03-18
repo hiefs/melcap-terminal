@@ -192,7 +192,7 @@ export const Desktop = () => {
         </Window>
         <Window
           width={400}
-          height={300}
+          height={600}
           title={"News"}
           start={{ x: 70, y: 70 }}
           open={isNewsOpen}
@@ -203,8 +203,8 @@ export const Desktop = () => {
           <NewsWindow />
         </Window>
         <Window
-          width={400}
-          height={300}
+          width={300}
+          height={200}
           title={"Support"}
           start={{ x: 80, y: 80 }}
           open={isSupportOpen}

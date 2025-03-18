@@ -4,6 +4,7 @@ import appReducer from "./features/app-reducer";
 import mailReducer from "./features/mail-reducer";
 import fileReducer from "./features/file-reducer";
 import newsReducer from "./features/news-reducer";
+import taskReducer from "./features/task-reducer";
 
 const reducers = combineReducers({
   app: appReducer,
@@ -11,6 +12,7 @@ const reducers = combineReducers({
   mail: mailReducer,
   file: fileReducer,
   news: newsReducer,
+  tasks: taskReducer,
 });
 
 export const makeStore = () => {

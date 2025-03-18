@@ -30,13 +30,27 @@ export const InfoWindow = (props: InfoWindowProps) => {
 
   return (
     <div>
-      <p className="mb-4">Name: {user.name}</p>
-      <p>Employee ID: {user.eId}</p>
-      <p>Race: {capitalizeFirstLetter(user.race)}</p>
-      <p className="mb-4">Age: {user.age}</p>
+      <p className="mb-4">
+        <span className="text-blue-500">Name:</span> {user.name}
+      </p>
+      <p>
+        <span className="text-blue-500">Employee ID: </span>
+        {user.eId}
+      </p>
+      <p>
+        <span className="text-blue-500">Race:</span>{" "}
+        {capitalizeFirstLetter(user.race)}
+      </p>
+      <p className="mb-4">
+        <span className="text-blue-500">Age:</span> {user.age}
+      </p>
 
-      <p>Department: {user.department}</p>
-      <p>Position: {user.title}</p>
+      <p>
+        <span className="text-blue-500">Department:</span> {user.department}
+      </p>
+      <p>
+        <span className="text-blue-500">Position:</span> {user.title}
+      </p>
       <div className="mt-4">
         <UtilityButton text="Log out" onClick={() => logout()} />
       </div>

@@ -1,6 +1,6 @@
 export const SupportWindow = () => {
   return (
-    <div className="w-full flex flex-col h-full justify-center items-center m-auto">
+    <div className="w-full flex flex-col h-fullitems-center mt-4">
       <p className="text-center">Have an issue?</p>
       <div className="text-center">
         <a
