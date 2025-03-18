@@ -14,8 +14,10 @@ const InboxNotification: React.FC<InboxNotificationProps> = ({
   subject,
 }) => {
   return (
-    <div className="bg-black w-full h-18 flex flex-col justify-center border-2 p-6 hover:bg-neutral-800">
-      <p className="text-base text-ellipsis">{sender}</p>
+    <div className="bg-black w-full h-18 flex flex-col justify-center border-2 p-2 hover:bg-neutral-800">
+      <p className="text-base overflow-hidden whitespace-nowrap truncate w-full">
+        {sender}
+      </p>
       <p className="text-xs">{subject}</p>
     </div>
   );
@@ -42,7 +44,11 @@ export const InboxWindow = () => {
             <hr className="mb-4" />
 
             {selectedMessage.message.split("\\n").map((line, index) => {
-              return <p key={index}>{line}</p>;
+              return (
+                <p className="mb-4" key={index}>
+                  {line}
+                </p>
+              );
             })}
           </div>
         )}

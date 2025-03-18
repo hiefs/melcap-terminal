@@ -31,6 +31,9 @@ export const Taskbar = () => {
     dispatch(setStartup(true));
   };
 
+  // BUILD THE START MENU PLEASE
+  // Needs Logout Button
+
   const futureDate = addYears(dateState, 146);
   return (
     <div className="pl-4 flex flex-row p-2 w-full justify-between z-50 fixed bottom-0 bg-(--background)">

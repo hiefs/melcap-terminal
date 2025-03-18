@@ -43,6 +43,7 @@ export const userLogout = createAsyncThunk(
         enrolledDate: "",
       })
     );
+
     dispatch(setRole(Role.User));
     dispatch(setIsLoggedIn(false));
     dispatch(setIsInfoOpen(false));

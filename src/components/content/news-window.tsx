@@ -10,7 +10,7 @@ interface NewsListProps {
 
 const NewsList: React.FC<NewsListProps> = ({ title, author }) => {
   return (
-    <div className="bg-black w-full h-24 flex flex-col justify-center border-2 p-6 hover:bg-neutral-800">
+    <div className="bg-black w-full h-18 flex flex-col p-2 justify-center border-2 hover:bg-neutral-800 ">
       <p className="text-base overflow-hidden whitespace-nowrap truncate w-full">
         {title}
       </p>

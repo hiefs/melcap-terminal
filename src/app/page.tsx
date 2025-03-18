@@ -59,10 +59,6 @@ export default function Home() {
 
   // Separate useEffect for fetching data
   useEffect(() => {
-    getEmployees().then((data) => {
-      dispatch(setEmployees(data));
-    });
-
     getMail().then((data) => {
       const currentMonth = new Date().getMonth();
       const filteredMail = data.filter((mail) => {
@@ -78,6 +74,10 @@ export default function Home() {
 
     getNews().then((data) => {
       dispatch(setNews(data));
+    });
+
+    getEmployees().then((data) => {
+      dispatch(setEmployees(data));
     });
 
     setTimeout(() => {
