@@ -42,13 +42,13 @@ export const Specialty: Careers[] = [
     department: "Business",
     positions: [
       "Galactic Business Reporter",
-      "Auditor",
+      "Small Business Auditor",
       "Supply Chain Technician",
     ],
   },
   {
     department: "Criminal justice",
-    positions: ["C-Sec Junior Officer", "C-Sec Detective"],
+    positions: ["C-Sec Junior Officer", "Forensic Scientist", "Coroner"],
   },
   {
     department: "Education",
@@ -56,7 +56,12 @@ export const Specialty: Careers[] = [
   },
   {
     department: "Engineering, Science & Mathematics",
-    positions: ["Materials Scientist"],
+    positions: [
+      "Materials Scientist",
+      "Mathematician",
+      "Astrophysicist",
+      "EEZO Researcher",
+    ],
   },
   {
     department: "Medicine & Health",
@@ -83,7 +88,7 @@ export const Specialty: Careers[] = [
   },
   {
     department: "Other",
-    positions: ["Presidium Tour Guide"],
+    positions: ["Presidium Tour Guide", "Customer Service"],
   },
 ];
 

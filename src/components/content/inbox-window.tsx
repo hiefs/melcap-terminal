@@ -34,7 +34,6 @@ export const InboxWindow = () => {
         ))}
       </div>
       <div className="w-full flex flex-col h-1/2 overflow-auto border-t-2 border-dashed overflow-auto">
-        {!selectedMessage && <p>Select a Message</p>}
         {selectedMessage && (
           <div className="mt-8">
             <p>From: {selectedMessage.sender}</p>
