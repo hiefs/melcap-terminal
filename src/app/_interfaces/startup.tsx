@@ -327,7 +327,7 @@ export const Startup = (props: StartupProps) => {
                 2000,
                 "We have found a career for you! \n\n Please wait while we generate your employee ID.",
                 2000,
-                "We have found a career for you! \n\n Please wait while we generate your employee ID. Please wait...",
+                "We have found a career for you! \n\n Please wait while we generate your employee ID. \n\n Please wait...",
                 () => generateId(),
                 5000,
                 `Your employee ID has been generated. \n\n You will need it to log in to access your C-MELCAP account. \n Please keep it safe.`,
@@ -511,7 +511,7 @@ export const Startup = (props: StartupProps) => {
                         specialty: spec.department,
                         position:
                           spec.positions[
-                            Math.floor(Math.random() * spec.positions.length)
+                          Math.floor(Math.random() * spec.positions.length)
                           ],
                       }));
                       nextStep();
