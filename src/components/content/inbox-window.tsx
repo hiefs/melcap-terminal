@@ -2,8 +2,8 @@
 
 import { useAppSelector } from "@/lib/hooks";
 import { Mail } from "@/lib/interfaces";
+import MarkdownRenderer from "@/lib/markdown-renderer";
 import { useState } from "react";
-import Markdown from "react-markdown";
 
 interface InboxNotificationProps {
   sender: string;
@@ -65,19 +65,15 @@ export const InboxWindow = () => {
       </div>
       <div className="w-full flex flex-col h-1/2 overflow-auto border-t-2 border-dashed overflow-auto">
         {selectedMessage && (
-          <div className="mt-8">
+          <div className="mt-2">
             <p>From: {selectedMessage.sender}</p>
             <p>To: You</p>
             <p className="mb-2">Subject: {selectedMessage.subject}</p>
             <hr className="mb-4" />
 
-            {selectedMessage.message.split("\\n").map((line, index) => {
-              return (
-                <div className="mb-4" key={index}>
-                  <Markdown>{line}</Markdown>
-                </div>
-              );
-            })}
+            <div className="mt-2">
+              <MarkdownRenderer url={selectedMessage.message} />
+            </div>
           </div>
         )}
       </div>

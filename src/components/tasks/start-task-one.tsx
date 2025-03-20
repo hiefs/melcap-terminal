@@ -20,16 +20,14 @@ const StageOne = () => {
       <TypeAnimation
         omitDeletionAnimation={true}
         sequence={[
-          "Welcome",
-          2000,
           "Preparing your task...",
           100,
           () => setShowLoader(true),
           5000,
-          () => setShowLoader(false),
           "Launching...",
+          3000,
+          () => setShowLoader(false),
           800,
-          "Are you prepared?",
           () => dispatch(setTaskStep(step + 1)),
         ]}
         wrapper="span"
@@ -105,12 +103,12 @@ const StageTwo = () => {
 
 const StageThree = () => {
   const [stageStep, setStageStep] = useState(0);
-  const dispatch = useAppDispatch();
-  const step = useAppSelector((state) => state.tasks.taskStep);
+  // const dispatch = useAppDispatch();
+  // const step = useAppSelector((state) => state.tasks.taskStep);
 
-  const nextStage = () => {
-    dispatch(setTaskStep(step + 1));
-  };
+  // const nextStage = () => {
+  //   dispatch(setTaskStep(step + 1));
+  // };
 
   const nextStep = (step: number) => {
     setStageStep(step);
@@ -121,11 +119,21 @@ const StageThree = () => {
       {stageStep === 0 && (
         <div className="w-full h-full flex flex-col gap-5 items-center justify-center">
           <div className="flex flex-row gap-5 justify-center items-center">
-            <button className="button w-12 h-18 border flex justify-center items-center"><Droplet /></button>
-            <button className="button w-12 h-18 border flex justify-center items-center"><Diamond /></button>
-            <button className="button w-12 h-18 border flex justify-center items-center"><Gem className="text-red-400" /></button>
-            <button className="button w-12 h-18 border flex justify-center items-center"><Lamp /></button>
-            <button className="button w-12 h-18 border flex justify-center items-center"><Waves className="text-blue-300" /></button>
+            <button className="button w-12 h-18 border flex justify-center items-center">
+              <Droplet />
+            </button>
+            <button className="button w-12 h-18 border flex justify-center items-center">
+              <Diamond />
+            </button>
+            <button className="button w-12 h-18 border flex justify-center items-center">
+              <Gem className="text-red-400" />
+            </button>
+            <button className="button w-12 h-18 border flex justify-center items-center">
+              <Lamp />
+            </button>
+            <button className="button w-12 h-18 border flex justify-center items-center">
+              <Waves className="text-blue-300" />
+            </button>
           </div>
           <p className="text-center">Please remember these symbols.</p>
           <div className="mt-5 w-full flex justify-center mb-5">
@@ -158,7 +166,10 @@ const StageThree = () => {
       )}
       {stageStep === 3 && (
         <div>
-          <p className="text-center">Are you likely to remain at a job that is more meaningful if there are less benefits?</p>
+          <p className="text-center">
+            Are you likely to remain at a job that is more meaningful if there
+            are less benefits?
+          </p>
           <div className="mt-5 w-full flex justify-center mb-5 gap-4">
             <UtilityButton text="Yes" onClick={() => nextStep(5)} />
             <UtilityButton text="No" onClick={() => nextStep(6)} />
@@ -167,7 +178,9 @@ const StageThree = () => {
       )}
       {stageStep === 4 && (
         <div>
-          <p className="text-center">Do you believe there should be no labor?</p>
+          <p className="text-center">
+            Do you believe there should be no labor?
+          </p>
           <div className="mt-5 w-full flex justify-center mb-5 gap-4">
             <UtilityButton text="Yes" onClick={() => nextStep(7)} />
             <UtilityButton text="No" onClick={() => nextStep(8)} />
@@ -177,7 +190,10 @@ const StageThree = () => {
 
       {stageStep === 5 && (
         <div>
-          <p className="text-center">Are you likely to remain at a job that is more meaningful if there are less benefits?</p>
+          <p className="text-center">
+            Are you likely to remain at a job that is more meaningful if there
+            are less benefits?
+          </p>
           <div className="mt-5 w-full flex justify-center mb-5 gap-4">
             <UtilityButton text="Yes" onClick={() => nextStep(9)} />
             <UtilityButton text="No" onClick={() => nextStep(10)} />
@@ -187,7 +203,10 @@ const StageThree = () => {
 
       {stageStep === 6 && (
         <div>
-          <p className="text-center">Are you likely to remain at a job that is more meaningful if there are less benefits?</p>
+          <p className="text-center">
+            Are you likely to remain at a job that is more meaningful if there
+            are less benefits?
+          </p>
           <div className="mt-5 w-full flex justify-center mb-5 gap-4">
             <UtilityButton text="Yes" onClick={() => nextStep(11)} />
             <UtilityButton text="No" onClick={() => nextStep(12)} />
@@ -196,7 +215,9 @@ const StageThree = () => {
       )}
       {stageStep === 7 && (
         <div>
-          <p className="text-center">Do you believe there should be no labor?</p>
+          <p className="text-center">
+            Do you believe there should be no labor?
+          </p>
           <div className="mt-5 w-full flex justify-center mb-5 gap-4">
             <UtilityButton text="Yes" onClick={() => nextStep(13)} />
             <UtilityButton text="No" onClick={() => nextStep(14)} />
@@ -205,7 +226,9 @@ const StageThree = () => {
       )}
       {stageStep === 8 && (
         <div>
-          <p className="text-center">Do you believe there should be no labor?</p>
+          <p className="text-center">
+            Do you believe there should be no labor?
+          </p>
           <div className="mt-5 w-full flex justify-center mb-5 gap-4">
             <UtilityButton text="Yes" onClick={() => nextStep(15)} />
             <UtilityButton text="No" onClick={() => nextStep(16)} />
@@ -213,8 +236,7 @@ const StageThree = () => {
         </div>
       )}
     </>
-
-  )
+  );
 };
 
 export const Start = () => {

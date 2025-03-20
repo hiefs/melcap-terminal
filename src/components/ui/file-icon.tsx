@@ -1,6 +1,6 @@
 "use client";
 
-import { openLinkInNewTab } from "@/utils/tools";
+import { openLinkInNewTab } from "@/utils/tools/tools";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 

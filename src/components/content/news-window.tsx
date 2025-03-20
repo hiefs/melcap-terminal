@@ -1,5 +1,6 @@
 import { useAppSelector } from "@/lib/hooks";
 import { News } from "@/lib/interfaces";
+import MarkdownRenderer from "@/lib/markdown-renderer";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -59,8 +60,7 @@ export const NewsWindow = () => {
       </div>
       <div className="w-full flex flex-col h-2/3 overflow-auto border-t-2 border-dashed overflow-auto">
         {selectedArticle && (
-          <div className="mt-8">
-            <p className="text-center mb-8">{selectedArticle.network}</p>
+          <div className="mt-2">
             {selectedArticle.img && (
               <Image
                 className="mx-auto block"
@@ -70,17 +70,7 @@ export const NewsWindow = () => {
                 height={200}
               />
             )}
-            <p className="text-lg">{selectedArticle.title}</p>
-            <p className="text-sm">By {selectedArticle.author}</p>
-            <p className="mb-4 text-xs">Posted</p>
-
-            {selectedArticle.article.split("\\n").map((line, index) => {
-              return (
-                <p className="mb-4" key={index}>
-                  {line}
-                </p>
-              );
-            })}
+            <MarkdownRenderer url={selectedArticle.article} />
           </div>
         )}
       </div>
