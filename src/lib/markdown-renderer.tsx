@@ -1,4 +1,5 @@
-// filepath: w:\Repo\archives\src\components\MarkdownRenderer.tsx
+"use client";
+
 import { fetchMarkdown } from "@/utils/markdown";
 import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
