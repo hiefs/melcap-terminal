@@ -1,7 +1,7 @@
 "use server";
 
 import { Mail } from "@/lib/interfaces";
-import client from "./supabase";
+import { client } from "./supabase";
 
 export async function getMail(): Promise<Mail[]> {
   const { data, error } = await client.from("mail").select("*");

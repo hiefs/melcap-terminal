@@ -5,6 +5,11 @@ const nextConfig: NextConfig = {
   images: {
     domains: ["supabase.owlbear.cc"],
   },
+  experimental: {
+    staleTimes: {
+      dynamic: 43200, // 12 hours
+    },
+  },
 };
 
 export default nextConfig;

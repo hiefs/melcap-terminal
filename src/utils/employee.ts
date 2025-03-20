@@ -1,7 +1,7 @@
 "use server";
 
 import { Employee, EmployeeLogin, EmployeeRegister } from "@/lib/interfaces.js";
-import client from "./supabase";
+import { client } from "./supabase";
 import { User } from "@/lib/features/user-reducer";
 
 export async function createEmployee(employee: Employee) {

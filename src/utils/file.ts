@@ -1,7 +1,7 @@
 "use server";
 
 import { File } from "@/lib/interfaces";
-import client from "./supabase";
+import { client } from "./supabase";
 
 export async function getFiles(): Promise<File[]> {
   const { data, error } = await client.from("files").select("*");

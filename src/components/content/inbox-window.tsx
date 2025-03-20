@@ -72,7 +72,7 @@ export const InboxWindow = () => {
             <hr className="mb-4" />
 
             <div className="mt-2">
-              <MarkdownRenderer url={selectedMessage.message} />
+              <MarkdownRenderer filename={selectedMessage.message} />
             </div>
           </div>
         )}

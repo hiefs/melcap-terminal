@@ -1,7 +1,7 @@
 "use server";
 
 import { News } from "@/lib/interfaces";
-import client from "./supabase";
+import { client } from "./supabase";
 
 export async function getNews(): Promise<News[]> {
   const { data, error } = await client.from("news").select("*");

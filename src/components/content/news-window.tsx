@@ -70,7 +70,7 @@ export const NewsWindow = () => {
                 height={200}
               />
             )}
-            <MarkdownRenderer url={selectedArticle.article} />
+            <MarkdownRenderer filename={selectedArticle.article} />
           </div>
         )}
       </div>

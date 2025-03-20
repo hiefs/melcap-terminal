@@ -7,17 +7,17 @@ import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
 
 interface MarkdownRendererProps {
-  url: string;
+  filename: string;
 }
 
-const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ url }) => {
+const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ filename }) => {
   const [content, setContent] = useState<string>("");
 
   useEffect(() => {
-    fetchMarkdown(url).then((data) => {
+    fetchMarkdown(filename).then((data) => {
       setContent(data || "");
     });
-  }, [url]);
+  }, [filename]);
 
   return (
     <div className="prose prose-lg mx-auto whitespace-pre-line">
