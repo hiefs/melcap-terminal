@@ -3,7 +3,13 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
-    domains: ["supabase.owlbear.cc"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "supabase.owlbear.cc",
+        pathname: "/**",
+      },
+    ],
   },
   experimental: {
     staleTimes: {

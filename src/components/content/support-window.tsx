@@ -18,7 +18,7 @@ export const SupportWindow = () => {
           href="https://github.com/hiefs/melcap-terminal/discussions"
           target="_blank"
         >
-          Share it with us
+          Let us know
         </a>
       </div>
     </div>
