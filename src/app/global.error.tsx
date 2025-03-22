@@ -9,11 +9,7 @@ const sourceCode = Source_Code_Pro({
   subsets: ["latin"],
 });
 
-export default function GlobalError({
-  error,
-}: {
-  error: Error & { digest?: string };
-}) {
+export default function GlobalError() {
   const router = useRouter();
 
   return (

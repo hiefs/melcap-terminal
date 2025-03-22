@@ -38,5 +38,6 @@
     "styled-components": "^6.1.15",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "packageManager": "yarn@4.7.0"
 }
