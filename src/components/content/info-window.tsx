@@ -1,8 +1,9 @@
-import { User } from "@/lib/features/user-reducer";
+import { Role, User } from "@/lib/features/user-reducer";
 import { UtilityButton } from "../ui/utility-button";
-import { useAppDispatch } from "@/lib/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { userLogout } from "@/lib/features/user-actions";
 import { setStartup } from "@/lib/features/app-reducer";
+import { useRouter } from "next/navigation";
 
 interface InfoWindowProps {
   user: User;
@@ -16,6 +17,8 @@ const capitalizeFirstLetter = (str: string) => {
 export const InfoWindow = (props: InfoWindowProps) => {
   const { user } = props;
   const dispatch = useAppDispatch();
+  const router = useRouter();
+  const role = useAppSelector((state) => state.user.role);
 
   const logout = () => {
     if (typeof window !== "undefined") {
@@ -38,8 +41,7 @@ export const InfoWindow = (props: InfoWindowProps) => {
         {user.eId}
       </p>
       <p>
-        <span>Race:</span>{" "}
-        {capitalizeFirstLetter(user.race)}
+        <span>Race:</span> {capitalizeFirstLetter(user.race)}
       </p>
       <p className="mb-4">
         <span>Age:</span> {user.age}
@@ -51,8 +53,14 @@ export const InfoWindow = (props: InfoWindowProps) => {
       <p>
         <span>Position:</span> {user.title}
       </p>
-      <div className="mt-4">
+      <div className="mt-4 gap-4 flex flex-row">
         <UtilityButton text="Log out" onClick={() => logout()} />
+        {role === Role.Admin && (
+          <UtilityButton
+            text="Console"
+            onClick={() => router.push("/console")}
+          />
+        )}
       </div>
     </div>
   );

@@ -13,7 +13,12 @@ export const userLogin = createAsyncThunk(
   "user/login",
   async (user: User, { dispatch }) => {
     dispatch(setUser(user));
-    dispatch(setRole(Role.User));
+
+    if (user.eId === "2fff45412f") {
+      dispatch(setRole(Role.Admin));
+    } else {
+      dispatch(setRole(Role.User));
+    }
     dispatch(setIsLoggedIn(true));
   }
 );

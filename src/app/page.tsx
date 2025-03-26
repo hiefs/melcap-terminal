@@ -4,12 +4,7 @@ import { useEffect, useState } from "react";
 import { Startup } from "./_interfaces/startup";
 import { Desktop } from "./_interfaces/desktop";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import {
-  Role,
-  setIsLoggedIn,
-  setRole,
-  setUser,
-} from "@/lib/features/user-reducer";
+import { setIsLoggedIn, setRole, setUser } from "@/lib/features/user-reducer";
 import { Loader } from "@/components/ui/loading-dots";
 import { setEmployees, setStartup } from "@/lib/features/app-reducer";
 import { getEmployees } from "@/utils/employee";
@@ -24,6 +19,7 @@ import { Mobile } from "./_interfaces/mobile";
 
 export default function Home() {
   const user = useAppSelector((state) => state.user.user);
+  const role = useAppSelector((state) => state.user.role);
   const app = useAppSelector((state) => state.app);
   const [isLoading, setIsLoading] = useState(true);
   const isStartupActive = app.isStartupActive;
@@ -54,10 +50,10 @@ export default function Home() {
   useEffect(() => {
     if (typeof window !== "undefined" && user.eId !== "") {
       window.localStorage.setItem("user", JSON.stringify(user));
-      window.localStorage.setItem("role", JSON.stringify(Role.User));
+      window.localStorage.setItem("role", JSON.stringify(role));
       window.localStorage.setItem("isLoggedIn", "true");
     }
-  }, [user]);
+  }, [role, user]);
 
   // Separate useEffect for fetching data
   useEffect(() => {
