@@ -21,7 +21,7 @@ export const SupportWindow = () => {
           Let us know
         </a>
       </div>
-      <p className="absolute top-0 text-xs left-0">v.1.0.0</p>
+      <p className="absolute top-0 text-xs left-0">v.1.0.1</p>
     </div>
   );
 };

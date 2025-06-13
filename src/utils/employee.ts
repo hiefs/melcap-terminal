@@ -5,7 +5,8 @@ import { client } from "./supabase";
 import { User } from "@/lib/features/user-reducer";
 
 export async function createEmployee(employee: Employee) {
-  const { error } = await client
+  const supabase = await client();
+  const { error } = await supabase
     .from("employee")
     .insert([
       {
@@ -27,7 +28,8 @@ export async function createEmployee(employee: Employee) {
 }
 
 export async function getEmployees(): Promise<EmployeeRegister[]> {
-  const { data, error } = await client
+  const supabase = await client();
+  const { data, error } = await supabase
     .from("employee")
     .select("employee_id, name, race, age, specialty, position, pin, banned");
 
@@ -48,7 +50,8 @@ export async function getEmployees(): Promise<EmployeeRegister[]> {
 }
 
 export async function matchEmployee(employee: EmployeeLogin) {
-  const { data, error } = await client
+  const supabase = await client();
+  const { data, error } = await supabase
     .from("employee")
     .select("*")
     .eq("employee_id", employee.employee_id)
@@ -77,7 +80,8 @@ export async function matchEmployee(employee: EmployeeLogin) {
 }
 
 export async function checkEmployeeId(employeeId: string) {
-  const { data, error } = await client
+  const supabase = await client();
+  const { data, error } = await supabase
     .from("employee")
     .select("*")
     .eq("employee_id", employeeId);

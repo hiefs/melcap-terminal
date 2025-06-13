@@ -47,33 +47,44 @@ export const NewsWindow = () => {
 
   return (
     <>
-      <div className="w-full flex flex-col h-1/3 overflow-auto gap-2">
-        {news.map((tile, index) => (
-          <div key={index} onClick={() => handleTileClick(tile, index)}>
-            <NewsList
-              title={tile.title}
-              author={tile.author}
-              selected={selectedIndex === index}
-            />
+      {news.length === 0 && (
+        <div className="w-full flex flex-col h-full justify-center items-center">
+          <p className="mb-4 ">
+            <span>No articles available.</span>
+          </p>
+        </div>
+      )}
+      {news.length > 0 && (
+        <>
+          <div className="w-full flex flex-col h-1/3 overflow-auto gap-2">
+            {news.map((tile, index) => (
+              <div key={index} onClick={() => handleTileClick(tile, index)}>
+                <NewsList
+                  title={tile.title}
+                  author={tile.author}
+                  selected={selectedIndex === index}
+                />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <div className="w-full flex flex-col h-2/3 overflow-auto border-t-2 border-dashed overflow-auto">
-        {selectedArticle && (
-          <div className="mt-2">
-            {selectedArticle.img && (
-              <Image
-                className="mx-auto block"
-                src={selectedArticle.img}
-                alt="news"
-                width={600}
-                height={200}
-              />
+          <div className="w-full flex flex-col h-2/3 overflow-auto border-t-2 border-dashed">
+            {selectedArticle && (
+              <div className="mt-2">
+                {selectedArticle.img && (
+                  <Image
+                    className="mx-auto block"
+                    src={selectedArticle.img}
+                    alt="news"
+                    width={600}
+                    height={200}
+                  />
+                )}
+                <MarkdownRenderer filename={selectedArticle.article} />
+              </div>
             )}
-            <MarkdownRenderer filename={selectedArticle.article} />
           </div>
-        )}
-      </div>
+        </>
+      )}
     </>
   );
 };

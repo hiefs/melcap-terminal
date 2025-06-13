@@ -4,7 +4,8 @@ import { Mail } from "@/lib/interfaces";
 import { client } from "./supabase";
 
 export async function getMail(): Promise<Mail[]> {
-  const { data, error } = await client.from("mail").select("*");
+  const supabase = await client();
+  const { data, error } = await supabase.from("mail").select("*");
 
   if (error) {
     throw error;

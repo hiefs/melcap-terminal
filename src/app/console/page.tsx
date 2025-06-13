@@ -19,7 +19,7 @@ export default function Console() {
     if (role === Role.User) {
       const savedRole = localStorage.getItem("role");
 
-      if (JSON.parse(savedRole) === Role.Admin) {
+      if (savedRole && JSON.parse(savedRole) === Role.Admin) {
         dispatch(setRole(Role.Admin));
         setIsLoading(false);
       } else {

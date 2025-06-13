@@ -9,6 +9,14 @@ export const FilesWindow = () => {
       {files.map((file, index) => (
         <FileIcon key={index} title={file.title} url={file.img} />
       ))}
+
+      {files.length === 0 && (
+        <div className="w-full flex flex-col h-full justify-center items-center">
+          <p className="mb-4 ">
+            <span>No files Available.</span>
+          </p>
+        </div>
+      )}
     </div>
   );
 };

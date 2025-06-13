@@ -4,7 +4,8 @@ import { News } from "@/lib/interfaces";
 import { client } from "./supabase";
 
 export async function getNews(): Promise<News[]> {
-  const { data, error } = await client.from("news").select("*");
+  const supabase = await client();
+  const { data, error } = await supabase.from("news").select("*");
 
   if (error) {
     throw error;

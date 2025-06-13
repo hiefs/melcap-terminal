@@ -5,7 +5,7 @@ import { TypeAnimation } from "react-type-animation";
 import { sourceCode } from "../layout";
 import { UtilityButton } from "@/components/ui/utility-button";
 import { ChevronRight } from "lucide-react";
-import { Employee, EmployeeLogin } from "@/lib/interfaces";
+import { Employee, EmployeeLogin, Stats } from "@/lib/interfaces";
 import { Homeworlds, Specialty } from "@/lib/definitions";
 import { customAlphabet } from "nanoid";
 import {
@@ -18,6 +18,7 @@ import { useAppDispatch } from "@/lib/hooks";
 import { userLogin } from "@/lib/features/user-actions";
 import { setStartup } from "@/lib/features/app-reducer";
 import { User } from "@/lib/features/user-reducer";
+import { addStats } from "@/utils/stats";
 
 interface StartupProps {
   open: boolean;
@@ -41,6 +42,10 @@ export const Startup = (props: StartupProps) => {
     employee_id: "",
     banned: false,
   });
+
+  const [isCooperative, setCooperative] = useState<boolean>();
+  const [isWhimsical, setWhimsical] = useState<boolean>();
+  const [isFearful, setFearful] = useState<boolean>();
 
   const [returnUser, setReturnUser] = useState<EmployeeLogin>({
     employee_id: "",
@@ -120,6 +125,13 @@ export const Startup = (props: StartupProps) => {
   };
 
   const submitEmployee = (data: Employee) => {
+    const employeeStats: Stats = {
+      cooperation: isCooperative ?? false,
+      whimsy: isWhimsical ?? false,
+      failure: isFearful ?? true,
+    };
+
+    addStats(employeeStats);
     createEmployee(data).then();
   };
 
@@ -259,7 +271,7 @@ export const Startup = (props: StartupProps) => {
                 "Thank you. \n\n We want to get to know you a little better.\n Please answer as honestly as possible. \n\n Please wait...",
                 5000,
                 "Do you work well with others?",
-                2000,
+                800,
                 () => nextStep(),
               ]}
               wrapper="span"
@@ -279,8 +291,8 @@ export const Startup = (props: StartupProps) => {
               sequence={[
                 "Please wait...",
                 5000,
-                "Does life require a purpose?",
-                5000,
+                "Does life require purpose?",
+                800,
                 () => nextStep(),
               ]}
               wrapper="span"
@@ -301,7 +313,7 @@ export const Startup = (props: StartupProps) => {
                 "Please wait...",
                 5000,
                 "Do you fear failure?",
-                5000,
+                800,
                 () => nextStep(),
               ]}
               wrapper="span"
@@ -511,7 +523,7 @@ export const Startup = (props: StartupProps) => {
                         specialty: spec.department,
                         position:
                           spec.positions[
-                          Math.floor(Math.random() * spec.positions.length)
+                            Math.floor(Math.random() * spec.positions.length)
                           ],
                       }));
                       nextStep();
@@ -529,20 +541,56 @@ export const Startup = (props: StartupProps) => {
           )}
           {activeStep === 12 && (
             <div className="flex flex-row justify-center items-center gap-4 mt-8">
-              <UtilityButton text="Yes" onClick={() => nextStep()} />
-              <UtilityButton text="No" onClick={() => nextStep()} />
+              <UtilityButton
+                text="Yes"
+                onClick={() => {
+                  setCooperative(true);
+                  nextStep();
+                }}
+              />
+              <UtilityButton
+                text="No"
+                onClick={() => {
+                  setCooperative(false);
+                  nextStep();
+                }}
+              />
             </div>
           )}
           {activeStep === 14 && (
             <div className="flex flex-row justify-center items-center gap-4 mt-8">
-              <UtilityButton text="Yes" onClick={() => nextStep()} />
-              <UtilityButton text="No" onClick={() => nextStep()} />
+              <UtilityButton
+                text="Yes"
+                onClick={() => {
+                  setWhimsical(true);
+                  nextStep();
+                }}
+              />
+              <UtilityButton
+                text="No"
+                onClick={() => {
+                  setWhimsical(false);
+                  nextStep();
+                }}
+              />
             </div>
           )}
           {activeStep === 16 && (
             <div className="flex flex-row justify-center items-center gap-4 mt-8">
-              <UtilityButton text="Yes" onClick={() => nextStep()} />
-              <UtilityButton text="No" onClick={() => nextStep()} />
+              <UtilityButton
+                text="Yes"
+                onClick={() => {
+                  setFearful(true);
+                  nextStep();
+                }}
+              />
+              <UtilityButton
+                text="No"
+                onClick={() => {
+                  setFearful(false);
+                  nextStep();
+                }}
+              />
             </div>
           )}
           {activeStep === 18 && (
@@ -683,7 +731,7 @@ export const Startup = (props: StartupProps) => {
                   setActiveStep(1);
                   setError(false);
                 }}
-                className="button border border-red-400 text-red-400 pl-2 pr-2 m-4"
+                className="button border border-red-400 text-red-400 pl-2 pr-2 m-4 absolute bottom-5 mx-auto"
               >
                 Cancel Enrollment
               </button>
