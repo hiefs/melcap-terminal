@@ -86,7 +86,6 @@ export default function Home() {
   return (
     <div className="w-full h-full">
       <BrowserView className="w-full h-full">
-        {" "}
         {isLoading ? (
           <div className="flex flex-row justify-center items-center gap-4 m-auto h-full w-full">
             <Loader />
