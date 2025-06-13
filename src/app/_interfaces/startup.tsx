@@ -43,9 +43,11 @@ export const Startup = (props: StartupProps) => {
     banned: false,
   });
 
-  const [isCooperative, setCooperative] = useState<boolean>();
-  const [isWhimsical, setWhimsical] = useState<boolean>();
-  const [isFearful, setFearful] = useState<boolean>();
+  const [userData, setUserData] = useState<Stats>({
+    cooperation: false,
+    whimsy: false,
+    failure: true,
+  });
 
   const [returnUser, setReturnUser] = useState<EmployeeLogin>({
     employee_id: "",
@@ -125,13 +127,7 @@ export const Startup = (props: StartupProps) => {
   };
 
   const submitEmployee = (data: Employee) => {
-    const employeeStats: Stats = {
-      cooperation: isCooperative ?? false,
-      whimsy: isWhimsical ?? false,
-      failure: isFearful ?? true,
-    };
-
-    addStats(employeeStats);
+    addStats(userData);
     createEmployee(data).then();
   };
 
@@ -195,9 +191,9 @@ export const Startup = (props: StartupProps) => {
               sequence={[
                 "Please wait...",
                 5000,
-                `Hello ${formData.name}!`,
+                `Hello, ${formData.name}!`,
                 2000,
-                `Hello ${formData.name}! \n\n Please select your home world.`,
+                `Hello, ${formData.name}! \n\n Please select your home world.`,
                 () => nextStep(),
               ]}
               wrapper="span"
@@ -544,14 +540,14 @@ export const Startup = (props: StartupProps) => {
               <UtilityButton
                 text="Yes"
                 onClick={() => {
-                  setCooperative(true);
+                  setUserData((prev) => ({ ...prev, cooperation: true }));
                   nextStep();
                 }}
               />
               <UtilityButton
                 text="No"
                 onClick={() => {
-                  setCooperative(false);
+                  setUserData((prev) => ({ ...prev, cooperation: false }));
                   nextStep();
                 }}
               />
@@ -562,14 +558,14 @@ export const Startup = (props: StartupProps) => {
               <UtilityButton
                 text="Yes"
                 onClick={() => {
-                  setWhimsical(true);
+                  setUserData((prev) => ({ ...prev, whimsy: false }));
                   nextStep();
                 }}
               />
               <UtilityButton
                 text="No"
                 onClick={() => {
-                  setWhimsical(false);
+                  setUserData((prev) => ({ ...prev, whimsy: true }));
                   nextStep();
                 }}
               />
@@ -580,14 +576,14 @@ export const Startup = (props: StartupProps) => {
               <UtilityButton
                 text="Yes"
                 onClick={() => {
-                  setFearful(true);
+                  setUserData((prev) => ({ ...prev, failure: true }));
                   nextStep();
                 }}
               />
               <UtilityButton
                 text="No"
                 onClick={() => {
-                  setFearful(false);
+                  setUserData((prev) => ({ ...prev, failure: false }));
                   nextStep();
                 }}
               />

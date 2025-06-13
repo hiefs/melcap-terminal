@@ -1,3 +1,5 @@
+"use server";
+
 import { Stats } from "@/lib/interfaces";
 import { client } from "./supabase";
 
