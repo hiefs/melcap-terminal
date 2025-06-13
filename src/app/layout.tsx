@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import Loading from "./loading";
 import StoreProvider from "./_providers/StoreProvider";
 
-export const sourceCode = Source_Code_Pro({
+const sourceCode = Source_Code_Pro({
   variable: "--font-source-code-pro",
   subsets: ["latin"],
 });
