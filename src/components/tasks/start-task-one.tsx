@@ -242,7 +242,6 @@ const StageThree = () => {
 export const Start = () => {
   const dispatch = useAppDispatch();
   const step = useAppSelector((state) => state.tasks.taskStep);
-  console.log(step);
 
   return (
     <div className="w-full flex h-full m-auto justify-center relative">
