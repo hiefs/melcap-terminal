@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { TypeAnimation } from "react-type-animation";
-import { sourceCode } from "../layout";
 import { UtilityButton } from "@/components/ui/utility-button";
 import { ChevronRight } from "lucide-react";
 import { Employee, EmployeeLogin, Stats } from "@/lib/interfaces";
@@ -19,6 +18,7 @@ import { userLogin } from "@/lib/features/user-actions";
 import { setStartup } from "@/lib/features/app-reducer";
 import { User } from "@/lib/features/user-reducer";
 import { addStats } from "@/utils/stats";
+import { sourceCode } from "@/components/ui/fonts";
 
 interface StartupProps {
   open: boolean;
