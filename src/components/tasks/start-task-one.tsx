@@ -2,12 +2,12 @@
 
 import { TypeAnimation } from "react-type-animation";
 import { UtilityButton } from "../ui/utility-button";
-import { sourceCode } from "@/app/layout";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { Loader } from "../ui/loading-dots";
 import { useState } from "react";
 import { setTaskStep } from "@/lib/features/task-reducer";
 import { Diamond, Droplet, Gem, Lamp, Waves } from "lucide-react";
+import { sourceCode } from "../ui/fonts";
 
 const StageOne = () => {
   // Are you prepared?
