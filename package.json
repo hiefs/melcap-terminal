@@ -40,5 +40,9 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   },
-  "packageManager": "yarn@4.7.0"
+  "packageManager": "yarn@4.7.0",
+  "resolutions": {
+    "js-yaml": "4.1.1",
+    "mdast-util-to-hast": "13.2.1"
+  }
 }
