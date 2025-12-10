@@ -53,3 +53,9 @@ export interface News {
   article: string;
   img?: string;
 }
+
+export interface Stats {
+  cooperation: boolean;
+  whimsy: boolean;
+  failure: boolean;
+}

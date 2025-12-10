@@ -1,3 +1,4 @@
+// eslint-disable-file @typescript-eslint/no-unused-vars
 "use client"; // Error boundaries must be Client Components
 
 import { Source_Code_Pro } from "next/font/google";

@@ -4,7 +4,8 @@ import { File } from "@/lib/interfaces";
 import { client } from "./supabase";
 
 export async function getFiles(): Promise<File[]> {
-  const { data, error } = await client.from("files").select("*");
+  const supabase = await client();
+  const { data, error } = await supabase.from("files").select("*");
 
   if (error) {
     throw error;

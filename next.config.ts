@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "supabase.owlbear.cc",
+        hostname: "data.melcap.cc",
         pathname: "/**",
       },
     ],

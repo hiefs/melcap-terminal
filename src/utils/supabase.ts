@@ -1,9 +1,14 @@
+"use server";
+
 import { createClient } from "@supabase/supabase-js";
 
 const supabaseUrl = process.env.SUPABASE_URL!;
 const supabaseKey = process.env.SUPABASE_KEY!;
-const client = createClient(supabaseUrl, supabaseKey);
 
-const storageClient = createClient(supabaseUrl, supabaseKey).storage;
+export async function client() {
+  return createClient(supabaseUrl, supabaseKey);
+}
 
-export { client, storageClient };
+export async function storageClient() {
+  return createClient(supabaseUrl, supabaseKey).storage;
+}

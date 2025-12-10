@@ -21,7 +21,8 @@ const fetchMarkdownContent = async (url: string) => {
 };
 
 export const fetchMarkdown = cache(async (filename: string) => {
-  const file = await storageClient.from("markdown").getPublicUrl(filename);
+  const supabase = await storageClient();
+  const file = await supabase.from("markdown").getPublicUrl(filename);
   const url = file.data.publicUrl;
   return fetchMarkdownContent(url);
 });

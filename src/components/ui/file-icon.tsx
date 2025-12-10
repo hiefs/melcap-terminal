@@ -44,7 +44,7 @@ export const FileIcon = (props: FileIconProps) => {
       >
         <Image
           src={
-            "https://supabase.owlbear.cc/storage/v1/object/public/desktop-icons/file.png"
+            "https://data.melcap.cc/storage/v1/object/public/desktop-icons/file.png"
           }
           alt={""}
           height={48}

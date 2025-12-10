@@ -11,17 +11,7 @@ export const SupportWindow = () => {
           Submit an Issue
         </a>
       </div>
-      <p className="text-center mt-4">Have an idea?</p>
-      <div className="text-center">
-        <a
-          className="text-blue-400 underline"
-          href="https://github.com/hiefs/melcap-terminal/discussions"
-          target="_blank"
-        >
-          Let us know
-        </a>
-      </div>
-      <p className="absolute top-0 text-xs left-0">v.1.0.0</p>
+      <p className="absolute top-0 text-xs left-0">v.1.0.1</p>
     </div>
   );
 };

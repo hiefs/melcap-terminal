@@ -62,56 +62,56 @@ export const Desktop = () => {
             <DesktopIcon
               title={"Trash"}
               image={
-                "https://supabase.owlbear.cc/storage/v1/object/public/desktop-icons/recycle_bin.png"
+                "https://data.melcap.cc/storage/v1/object/public/desktop-icons/recycle_bin.png"
               }
               onClick={() => dispatch(setIsTrashOpen(!isTrashOpen))}
             />
             <DesktopIcon
               title={"Info"}
               image={
-                "https://supabase.owlbear.cc/storage/v1/object/public/desktop-icons/text_file.png"
+                "https://data.melcap.cc/storage/v1/object/public/desktop-icons/text_file.png"
               }
               onClick={() => dispatch(setIsInfoOpen(!isInfoOpen))}
             />
             <DesktopIcon
               title={"Tasks"}
               image={
-                "https://supabase.owlbear.cc/storage/v1/object/public/desktop-icons/tasks.png"
+                "https://data.melcap.cc/storage/v1/object/public/desktop-icons/tasks.png"
               }
               onClick={() => dispatch(setIsTasksOpen(!isTasksOpen))}
             />
             <DesktopIcon
               title={"Files"}
               image={
-                "https://supabase.owlbear.cc/storage/v1/object/public/desktop-icons/folder_open.png"
+                "https://data.melcap.cc/storage/v1/object/public/desktop-icons/folder_open.png"
               }
               onClick={() => dispatch(setIsFilesOpen(!isFilesOpen))}
             />
             <DesktopIcon
               title={"Inbox"}
               image={
-                "https://supabase.owlbear.cc/storage/v1/object/public/desktop-icons/mail.png"
+                "https://data.melcap.cc/storage/v1/object/public/desktop-icons/mail.png"
               }
               onClick={() => dispatch(setIsInboxOpen(!isInboxOpen))}
             />
             <DesktopIcon
               title="Search"
               image={
-                "https://supabase.owlbear.cc/storage/v1/object/public/desktop-icons/search.png"
+                "https://data.melcap.cc/storage/v1/object/public/desktop-icons/search.png"
               }
               onClick={() => dispatch(setIsSearchOpen(!isSearchOpen))}
             />
             <DesktopIcon
               title="News"
               image={
-                "https://supabase.owlbear.cc/storage/v1/object/public/desktop-icons/news.png"
+                "https://data.melcap.cc/storage/v1/object/public/desktop-icons/search.png"
               }
               onClick={() => dispatch(setIsNewsOpen(!isNewsOpen))}
             />
             <DesktopIcon
               title="Support"
               image={
-                "https://supabase.owlbear.cc/storage/v1/object/public/desktop-icons/support.png"
+                "https://data.melcap.cc/storage/v1/object/public/desktop-icons/support.png"
               }
               onClick={() => dispatch(setIsSupportOpen(!isSupportOpen))}
             />
@@ -143,7 +143,7 @@ export const Desktop = () => {
           <InfoWindow user={user} />
         </Window>
         <Window
-          width={800}
+          width={400}
           height={475}
           title={"Tasks"}
           start={{ x: 30, y: 30 }}
